@@ -1,9 +1,8 @@
 /****************************************************************************/
 /* BEGIN FILE qtcolortable.cpp                                              */
-/*                                                                          */
 /****************************************************************************/
 /* PURPOSE                                                                  */
-/*                                                                          */
+/*        Main code for ColorTable application                              */
 /****************************************************************************/
 /* DESIGN NOTES                                                             */
 /*                                                                          */
@@ -14,7 +13,7 @@
 /*      @author    jsowers           26MAY24                                */
 /*                                                                          */
 /*   Modifications:                                                         */
-/*                                                                          */
+/*                 jsowers           01JUN24   Added means to tie sliders   */
 /****************************************************************************/
 /* INCLUDE FILES                                                            */
 /*                                                                          */
@@ -24,8 +23,8 @@
 #include <QString>
 #include <qcolor.h>
 #include "qtcolortable.h"
-#include "../ColorTable/Color.h"
-#include "../ColorTable/ColorTable.h"
+#include "Color.h"
+#include "ColorTable.h"
 #include <cmath>
 
 using namespace std;
@@ -33,7 +32,7 @@ using namespace std;
 /*                                                                          */
 /****************************************************************************/
 /* DEFINES                                                                  */
-/*                                                                          */
+/*                                                                          */ 
 /****************************************************************************/
 
 /**
@@ -541,7 +540,7 @@ void QtColorTable::loadNameList () {
 	nameList.append ("Green Led");
 	nameList.append ("Green Line");
 	nameList.append ("Green Mist");
-	nameList.append ("Green Mm");
+	nameList.append ("Green MM");
 	nameList.append ("Green Moth");
 	nameList.append ("Green Party");
 	nameList.append ("Green Pepper");
@@ -1229,16 +1228,41 @@ void QtColorTable::processNamedColor () {
 	setAreaColor (hexvalue);
 
 	// Sliders range from 0 to 255, so we need the int value of the appropriate hex
-	ui.redSlider->setValue (Color::getRedInt (hexvalue));
-	ui.greenSlider_2->setValue (Color::getGreenInt (hexvalue));
-	ui.blueSlider_3->setValue (Color::getBlueInt (hexvalue));
+	currentRed = Color::getRedInt (hexvalue);
+	currentGreen = Color::getGreenInt (hexvalue);
+	currentBlue = Color::getBlueInt (hexvalue);
+	ui.redSlider->setValue (currentRed);
+	ui.greenSlider_2->setValue (currentGreen);
+	ui.blueSlider_3->setValue (currentBlue);
+	displayRGB (hexvalue);
+}
+
+/**
+* Display the current value of the RGB on the screen.
+* 
+* \param hexvalue   the RRGGBB HEX string.
+*/
+void QtColorTable::displayRGB (string hexvalue) {
+	int currentRed = Color::getRedInt (hexvalue);
+	int currentGreen = Color::getGreenInt (hexvalue);
+	int currentBlue = Color::getBlueInt (hexvalue);
+	string rgbstring = "RGB(";
+	rgbstring.append (to_string (currentRed));
+	rgbstring.append (",");
+	rgbstring.append (to_string (currentGreen));
+	rgbstring.append (",");
+	rgbstring.append (to_string (currentBlue));
+	rgbstring.append (")");
+	ui.rgbvalue->setText (QString::fromStdString (rgbstring));
 }
 
 /**
  * Method connected to the Red/Green/Blue sliders.
  * Uses the slider positions to compute the 6-char HEX color value and
  * sets the text below the color swatch as well as putting the
- * color as background to the swatch. Also sets the slider positions to
+ * color as background to the swatch.  Uses the settings of the Radio buttons
+ * to determine if and how the sliders are tied together. Default is the sliders
+ * are  independent. Also sets the slider positions to
  * correspond to the color value.  It then disconnects the signals so that
  * when it sets the combobox the corresponding method is not called. Then resets
  * the signals.
@@ -1247,16 +1271,107 @@ void QtColorTable::processSliders () {
 	int rval = ui.redSlider->value ();
 	int gval = ui.greenSlider_2->value ();
 	int bval = ui.blueSlider_3->value ();
+	int deltaR = rval - currentRed;
+	int deltaG = gval - currentGreen;
+	int deltaB = bval - currentBlue;
+	int inCtrl = whosInControl (deltaR, deltaG, deltaB);
+
+	setSignals (false);
+
+	if (ui.rb1->isChecked ()) {
+		// TBD All Tied
+		switch (inCtrl) {
+			case 1:  // Red was moved, change bval and gval
+				bval += deltaR;
+				gval += deltaR;
+				ui.blueSlider_3->setValue (bval);
+				ui.greenSlider_2->setValue (gval);
+				break;
+			case 2:  // Green was moved
+				rval += deltaG;
+				bval += deltaG;
+				ui.blueSlider_3->setValue (bval);
+				ui.redSlider->setValue (rval);
+				break;
+			case 3:  // Blue done it.
+				rval += deltaB;
+				gval += deltaB;
+				ui.redSlider->setValue (rval);
+				ui.greenSlider_2->setValue (gval);
+				break;
+		}
+	} else if (ui.rb2->isChecked ()) {
+		// Red-Green Tied, Blue Independent
+		switch (inCtrl) {
+		case 1:   // Red moved, change green, let blue be were it is
+			gval += deltaR;
+			ui.greenSlider_2->setValue (gval);
+			break;
+		case 2:
+			rval += deltaG;
+			ui.redSlider->setValue (rval);
+			break;
+		case 3:
+			break;
+		}
+	} else if (ui.rb3->isChecked ()) {
+		// Red-Blue Tied, Green Independent
+		switch (inCtrl) {
+		case 1:   // Red moved, change blue, let green be were it is
+			bval += deltaR;
+			ui.blueSlider_3->setValue (bval);
+			break;
+		case 2:
+			break;
+		case 3:
+			rval += deltaB;
+			ui.redSlider->setValue (rval);
+			break;
+		}
+	} else if (ui.rb4->isChecked ()) {
+		// Green-Blue Tied, Red Independent
+		switch (inCtrl) {
+		case 1:   // Red moved, change green, let blue be were it is
+			break;
+		case 2:
+			bval += deltaG;
+			ui.blueSlider_3->setValue (bval);
+			break;
+		case 3:
+			gval += deltaB;
+			ui.greenSlider_2->setValue (gval);
+			break;
+		}
+	}
 	int colorValue = 256 * (256 * rval + gval) + bval;
 	string hexval = Color::int2hex (colorValue);
 	ui.hexValue->setText (QString::fromStdString (hexval));
 	setAreaColor (hexval);
+	displayRGB (hexval);
 
-	setSignals (false);
 	string name = lookupName (hexval);
 	ui.colorNameCB->setCurrentText (QString::fromStdString (name));
 	setSignals (true);
+
+	currentBlue = bval;
+	currentRed = rval;
+	currentGreen = gval;
 }
+
+/**
+* Determines which slider the user has moved.
+* \param dR   value of delta Red (red position - old red position)
+* \param dG   value of delta Green
+* \param dB   value of delta Blue
+*/
+int QtColorTable::whosInControl (int dR, int dG, int dB) {
+	if (dR != 0) {
+		return 1;
+	} else if (dG != 0) {
+		return 2;
+	} else return 3;
+}
+
 
 /**
  * Looks up the name corresponding to the input value.
