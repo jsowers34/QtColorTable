@@ -14,7 +14,7 @@
 /*      @author    jsowers           24MAY24                                */
 /*                                                                          */
 /*   Modifications:                                                         */
-/*                                                                          */
+/*                                                                            */
 /****************************************************************************/
 /* INCLUDE FILES                                                            */
 /*                                                                          */
@@ -521,7 +521,7 @@ void ColorTable::loadColorMap () {
     colorMap.insert ({ "Green Led", new Color (93, 252, 10) });      // 0x5DFC0A
     colorMap.insert ({ "Green Line", new Color (50, 149, 85) });      // 0x329555
     colorMap.insert ({ "Green Mist", new Color (188, 237, 145) });      // 0xBCED91
-    colorMap.insert ({ "Green Mm", new Color (75, 183, 76) });      // 0x4BB74C
+    colorMap.insert ({ "Green MM", new Color (75, 183, 76) });      // 0x4BB74C
     colorMap.insert ({ "Green Moth", new Color (123, 191, 106) });      // 0x7BBF6A
     colorMap.insert ({ "Green Party", new Color (62, 107, 79) });      // 0x3E6B4F
     colorMap.insert ({ "Green Pepper", new Color (57, 125, 2) });      // 0x397D02
@@ -1612,7 +1612,7 @@ void ColorTable::loadNameMap () {
     nameMap.insert ({ "5DFC0A","Green Led" });
     nameMap.insert ({ "329555","Green Line" });
     nameMap.insert ({ "BCED91","Green Mist" });
-    nameMap.insert ({ "4BB74C","Green Mm" });
+    nameMap.insert ({ "4BB74C","Green MM" });
     nameMap.insert ({ "7BBF6A","Green Moth" });
     nameMap.insert ({ "3E6B4F","Green Party" });
     nameMap.insert ({ "397D02","Green Pepper" });
@@ -2247,8 +2247,8 @@ Color *ColorTable::getColor (string colorName)  {
 /**
  * Access Method.
  *
- * \param colorName : 6 character HEX value
- * \return the the name corresponding the the HEX value. If not found, return "UNKNOWN".
+ * \param colorName : 6 character HEX value.
+ * \return the name corresponding the the HEX value. If not found, return "UNKNOWN".
  */
 string ColorTable::getColorName (string hexstr) {
     string result = "UNKNOWN";
