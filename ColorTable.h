@@ -48,20 +48,23 @@ public:
 
 	Color *getColor (string colorName);
 	string getColorName (string hexstr);
-	map<string, Color*>  getColorMap ();
+
+	typedef map<string, Color *> ColorMap;
+	typedef map<string, string> NameMap;
+
+
+	ColorMap  getColorMap ();
 	map<string, string>  getNameMap ();
 
 	void dumpColorMapNames ();
 	void dumpNameMapNames ();
 
-
-
 private:
-	map<string, Color* >  colorMap;
-	map<string, string> nameMap;
+	ColorMap  colorMap;      /**< Maps the Color Name to the corresponding Color class. */
+	NameMap   nameMap;       /**< Maps the 6-Char Hex code to the Color Name. */
 
 	void loadColorMap ();
-	void loadNameMap ();
+	void createNameMap ();
 
 };
 

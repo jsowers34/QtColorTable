@@ -1,9 +1,8 @@
 /****************************************************************************/
 /* BEGIN FILE Color.cpp                                                     */
-/*                                                                          */
 /****************************************************************************/
 /* PURPOSE                                                                  */
-/*                                                                          */
+/*      Provides a base Color class.                                        */
 /****************************************************************************/
 /* DESIGN NOTES                                                             */
 /*                                                                          */
@@ -33,8 +32,6 @@ using namespace std;
 /****************************************************************************/
 /*	 Begin Code                                                             */
 
-
-
 /**
  * Default Constructor.
  * All values -1.
@@ -49,9 +46,9 @@ Color::Color () {
 /**
  * Constructor using RGB integer input.
  * 
- * \param red
- * \param green
- * \param blue
+ * @param red   integer between 0 and 255 for the red component.
+ * @param green integer between 0 and 255 for the green component.
+ * @param blue  integer between 0 and 255 for the blue component.
  */
 Color::Color (int red, int green, int blue) {
 	m_red   = red;
@@ -64,9 +61,9 @@ Color::Color (int red, int green, int blue) {
  * Constructor using RGB float input.
  * float parameters converted to int.
  * 
- * \param red
- * \param green
- * \param blue
+ * @param red     float between 0. and 255. for the red component.
+ * @param green   float between 0. and 255. for the green component.
+ * @param blue    float between 0. and 255. for the blue component.
  */
 Color::Color (float red, float green, float blue) {
 	m_red   = int(red);
@@ -77,8 +74,7 @@ Color::Color (float red, float green, float blue) {
 
 /**
  * Constructor using a HEX color value as input.
- * 
- * \param hexstring : a 6 character color value, e.g., "FFFF00".
+ * @param hexstring : a 6 character color value, e.g., "FFFF00".
  */
 Color::Color (string hexstring) {
 	int red = hex2int (getRedHex (hexstring));
@@ -88,19 +84,16 @@ Color::Color (string hexstring) {
 }
 
 /**
- * Accessor method.
- * 
- * \return the HEX value of the class' colorValue.
+ * @return the HEX value of the class' colorValue.
  */
 string Color::getHexColor() {
 	return int2hex (colorValue);
 }
 
 /**
- * Conversion method.
- * 
- * \param x :  integer value
- * \return the HEX string equivalent of the input integer. Alpha characters are uppercase.
+ * Converts an integer to the corresponding HEX value.
+ * @param x :  integer value
+ * @return the HEX string equivalent of the input integer. Alpha characters are uppercase.
  */
 string Color::int2hex (int x) {
 	stringstream sstream;
@@ -123,20 +116,19 @@ string Color::int2hex (int x) {
 }
 
 /**
- * Conversion method.
+ * Converts a hex string to the corresponding integer value.
  * 
- * \param hexstr : input is a HEX color string
- * \return the integer equivalent.
+ * @param hexstr : input is a HEX color string
+ * @return the integer equivalent.
  */
 int Color::hex2int (string hexstr) {
 	return stoi (hexstr, 0, 16);
 }
 
 /**
- * Accessor method.
- * 
- * \param hexstr : input is a 6 character HEX color string.
- * \return the RED portion (1st 2 characters).
+ * Accesses the 1st 2 characters of the hex string.
+ * @param hexstr : input is a 6 character HEX color string.
+ * @return the RED portion (1st 2 characters).
  */
 string Color::getRedHex (string hexstr) {
 	return hexstr.substr (0, 2);
@@ -145,8 +137,8 @@ string Color::getRedHex (string hexstr) {
 /**
  * Accessor method.
  *
- * \param hexstr : input is a 6 character HEX color string.
- * \return the GREEN portion (middle 2 characters).
+ * @param hexstr : input is a 6 character HEX color string.
+ * @return the GREEN portion (middle 2 characters).
  */
 string Color::getGreenHex (string hexstr) {
 	return hexstr.substr (2, 2);
@@ -155,8 +147,8 @@ string Color::getGreenHex (string hexstr) {
 /**
  * Accessor method.
  *
- * \param hexstr : input is a 6 character HEX color string.
- * \return the BLUE portion (last 2 characters).
+ * @param hexstr : input is a 6 character HEX color string.
+ * @return the BLUE portion (last 2 characters).
  */
 string Color::getBlueHex (string hexstr) {
 	return hexstr.substr (4, 2);
@@ -165,8 +157,8 @@ string Color::getBlueHex (string hexstr) {
 /**
  * Accessor method.
  * 
- * \param hexstr : input is a 6 character HEX color string.
- * \return integer value of RED portion of the string.
+ * @param hexstr : input is a 6 character HEX color string.
+ * @return integer value of RED portion of the string.
  */
 int Color::getRedInt (string hexstr) {
 	return hex2int (getRedHex (hexstr));
@@ -175,8 +167,8 @@ int Color::getRedInt (string hexstr) {
 /**
  * Accessor method.
  *
- * \param hexstr : input is a 6 character HEX color string.
- * \return integer value of GREEN portion of the string.
+ * @param hexstr : input is a 6 character HEX color string.
+ * @return integer value of GREEN portion of the string.
  */
 int Color::getGreenInt (string hexstr){
 	return hex2int (getGreenHex (hexstr));
@@ -185,8 +177,8 @@ int Color::getGreenInt (string hexstr){
 /**
  * Accessor method.
  *
- * \param hexstr : input is a 6 character HEX color string.
- * \return integer value of BLUE portion of the string.
+ * @param hexstr : input is a 6 character HEX color string.
+ * @return integer value of BLUE portion of the string.
  */
 int Color::getBlueInt (string hexstr){
 	return hex2int (getBlueHex (hexstr));
@@ -195,7 +187,7 @@ int Color::getBlueInt (string hexstr){
 /**
  * Accessor method.
  * 
- * \return the RED value of the class.
+ * @return the RED value of the class.
  */
 int Color::getRed () {
 	return m_red;
@@ -204,7 +196,7 @@ int Color::getRed () {
 /**
  * Accessor method.
  *
- * \return the GREEN value of the class.
+ * @return the GREEN value of the class.
  */
 int Color::getGreen () {
 	return m_green;
@@ -213,7 +205,7 @@ int Color::getGreen () {
 /**
  * Accessor method.
  *
- * \return the BLUE value of the class.
+ * @return the BLUE value of the class.
  */
 int Color::getBlue () {
 	return m_blue;

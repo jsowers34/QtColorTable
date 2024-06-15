@@ -1,9 +1,8 @@
 /****************************************************************************/
-/* BEGIN FILE  Color.h                                                      */
-/*                                                                          */
+/* BEGIN FILE  HelpDialog.h                                                 */
 /****************************************************************************/
 /* PURPOSE                                                                  */
-/*      Provide basic color methods.                                                                    */
+/*                                                                          */
 /****************************************************************************/
 /* DESIGN NOTES                                                             */
 /*                                                                          */
@@ -19,58 +18,34 @@
 /* SAFETY DEFINITION                                                        */
 /*                                                                          */
 
-#ifndef _COLOR_H_
-#define _COLOR_H_
+#ifndef HELPDIALOG_H
+#define HELPDIALOG_H
 
 /****************************************************************************/
 /* INCLUDE FILES                                                            */
 /*                                                                          */
 
-#include <string>
-
-/****************************************************************************/
-/* DEFINES                                                                  */
-/*                                                                          */
 #pragma once
 
-using namespace std;
+#include <QtWidgets/QDialog>
+#include "ui_HelpDialog.h"
 
 /****************************************************************************/
 /*	 Begin Code                                                             */
 
-class Color {
+QT_BEGIN_NAMESPACE
+    namespace Ui { class HelpDialogClass; };
+QT_END_NAMESPACE
+
+class HelpDialog : public QDialog {
+    Q_OBJECT
 
 public:
-    Color ();
-    Color (int red, int green, int blue);
-    Color (float red, float green, float blue);
-    Color (string hexstring);
-
-    static int hex2int (string hexstr);
-    static string int2hex (int x);
-    string getHexColor ();
-    static string getRedHex (string hexstr);
-    static string getGreenHex (string hexstr);
-    static string getBlueHex (string hexstr);
-    static int getRedInt (string hexstr);
-    static int getGreenInt (string hexstr);
-    static int getBlueInt (string hexstr);
-
-    int getRed ();
-    int getGreen ();
-    int getBlue ();
-    void   toString ();
-
-    static const int UNKNOWN = 1;  /**< Represents an unnamed color or, at least, one not in the current list. */
-
+    HelpDialog(QWidget *parent = nullptr);
+    ~HelpDialog();
 
 private:
-    int m_red = 0;
-    int m_green = 0;
-    int m_blue = 0;
-
-    int colorValue;
+    Ui::HelpDialogClass *ui;
 };
 
 #endif
-

@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/QtColorTable">
+        <file>rff_logo.png</file>
+        <file>Palette.gif</file>
+        <file>QtColorTable.jpg</file>
+        <file>Palette.ico</file>
+    </qresource>
+</RCC>

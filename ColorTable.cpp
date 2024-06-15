@@ -1,9 +1,8 @@
 /****************************************************************************/
 /* BEGIN FILE ColorTable.cpp                                                */
-/*                                                                          */
 /****************************************************************************/
 /* PURPOSE                                                                  */
-/*                                                                          */
+/*      Provides the basic color table information.                         */
 /****************************************************************************/
 /* DESIGN NOTES                                                             */
 /*                                                                          */
@@ -36,7 +35,7 @@
  */
 ColorTable::ColorTable () {
     loadColorMap ();
-    loadNameMap ();
+    createNameMap ();
 }
 
 /**
@@ -107,6 +106,7 @@ void ColorTable::loadColorMap () {
     colorMap.insert ({ "Blood Orange", new Color (204, 17, 0) });      // 0xCC1100
     colorMap.insert ({ "Bloodred", new Color (102, 0, 0) });      // 0x660000
     colorMap.insert ({ "Blue ", new Color (0, 0, 255) });      // 0x0000FF
+    colorMap.insert ({ "Blue2", new Color (0, 0, 238) });      // 0x0000EE
     colorMap.insert ({ "Blue Angels", new Color (43, 79, 129) });      // 0x2B4F81
     colorMap.insert ({ "Blue Bird", new Color (73, 115, 171) });      // 0x4973AB
     colorMap.insert ({ "Blue Bucket", new Color (73, 157, 245) });      // 0x499DF5
@@ -136,11 +136,10 @@ void ColorTable::loadColorMap () {
     colorMap.insert ({ "Blue Tuna", new Color (104, 124, 151) });      // 0x687C97
     colorMap.insert ({ "Blue Velvet", new Color (22, 34, 82) });      // 0x162252
     colorMap.insert ({ "Blue Whale", new Color (66, 100, 127) });      // 0x42647F
-    colorMap.insert ({ "Blue2", new Color (0, 0, 238) });      // 0x0000EE
     colorMap.insert ({ "Blueberry Fresh", new Color (89, 113, 173) });      // 0x5971AD
     colorMap.insert ({ "Bluegrass", new Color (76, 112, 100) });      // 0x4C7064
     colorMap.insert ({ "Blueviolet", new Color (159, 95, 159) });      // 0x9F5F9F
-    colorMap.insert ({ "Blueviolet ", new Color (138, 43, 226) });      // 0x8A2BE2
+    colorMap.insert ({ "Blueviolet 2", new Color (138, 43, 226) });      // 0x8A2BE2
     colorMap.insert ({ "Bone", new Color (255, 255, 204) });      // 0xFFFFCC
     colorMap.insert ({ "Bordeaux", new Color (153, 24, 44) });      // 0x99182C
     colorMap.insert ({ "Bottle Green", new Color (29, 162, 55) });      // 0x1DA237
@@ -154,7 +153,7 @@ void ColorTable::loadColorMap () {
     colorMap.insert ({ "Broadway Pink", new Color (255, 0, 102) });      // 0xFF0066
     colorMap.insert ({ "Broccoli", new Color (88, 105, 73) });      // 0x586949
     colorMap.insert ({ "Bronze", new Color (140, 120, 83) });      // 0x8C7853
-    colorMap.insert ({ "Bronzeii", new Color (166, 125, 61) });      // 0xA67D3D
+    colorMap.insert ({ "Bronze II", new Color (166, 125, 61) });      // 0xA67D3D
     colorMap.insert ({ "Brown", new Color (128, 42, 42) });      // 0x802A2A
     colorMap.insert ({ "Brown Madder", new Color (219, 41, 41) });      // 0xDB2929
     colorMap.insert ({ "Brown Ochre", new Color (135, 66, 31) });      // 0x87421F
@@ -185,9 +184,9 @@ void ColorTable::loadColorMap () {
     colorMap.insert ({ "Cadmium Yellowlight", new Color (255, 176, 15) });      // 0xFFB00F
     colorMap.insert ({ "Cafe Americano", new Color (54, 40, 25) });      // 0x362819
     colorMap.insert ({ "Cafe Au Lait", new Color (182, 124, 61) });      // 0xB67C3D
-    colorMap.insert ({ "Camo1", new Color (207, 219, 197) });      // 0xCFDBC5
-    colorMap.insert ({ "Camo2", new Color (169, 201, 164) });      // 0xA9C9A4
-    colorMap.insert ({ "Camo3", new Color (157, 182, 140) });      // 0x9DB68C
+    colorMap.insert ({ "Camo", new Color (207, 219, 197) });      // 0xCFDBC5
+    colorMap.insert ({ "Camo1", new Color (169, 201, 164) });      // 0xA9C9A4
+    colorMap.insert ({ "Camo2", new Color (157, 182, 140) });      // 0x9DB68C
     colorMap.insert ({ "Cantaloupe", new Color (156, 169, 152) });      // 0x9CA998
     colorMap.insert ({ "Canvas", new Color (157, 136, 81) });      // 0x9D8851
     colorMap.insert ({ "Cappuccino", new Color (178, 134, 71) });      // 0xB28647
@@ -202,10 +201,10 @@ void ColorTable::loadColorMap () {
     colorMap.insert ({ "Celtics", new Color (0, 97, 28) });      // 0x00611C
     colorMap.insert ({ "Cerulean", new Color (5, 184, 204) });      // 0x05B8CC
     colorMap.insert ({ "Chartreuse ", new Color (127, 255, 0) });      // 0x7FFF00
+    colorMap.insert ({ "Chartreuse1", new Color (118, 238, 0) });      // 0x76EE00
+    colorMap.insert ({ "Chartreuse2", new Color (102, 205, 0) });      // 0x66CD00
+    colorMap.insert ({ "Chartreuse3", new Color (69, 139, 0) });      // 0x458B00
     colorMap.insert ({ "Chartreuse Verte", new Color (188, 233, 55) });      // 0xBCE937
-    colorMap.insert ({ "Chartreuse2", new Color (118, 238, 0) });      // 0x76EE00
-    colorMap.insert ({ "Chartreuse3", new Color (102, 205, 0) });      // 0x66CD00
-    colorMap.insert ({ "Chartreuse4", new Color (69, 139, 0) });      // 0x458B00
     colorMap.insert ({ "Cheddar", new Color (255, 196, 105) });      // 0xFFC469
     colorMap.insert ({ "Chemical Suit", new Color (89, 147, 229) });      // 0x599300
     colorMap.insert ({ "Cherry", new Color (235, 94, 102) });      // 0xEB5E66
@@ -262,8 +261,8 @@ void ColorTable::loadColorMap () {
     colorMap.insert ({ "Cucumber", new Color (44, 93, 63) });      // 0x2C5D3F
     colorMap.insert ({ "Curacao", new Color (91, 89, 186) });      // 0x5B59BA
     colorMap.insert ({ "Cyan ", new Color (0, 255, 255) });      // 0x00FFFF
-    colorMap.insert ({ "Cyan2", new Color (0, 238, 238) });      // 0x00EEEE
-    colorMap.insert ({ "Cyan3", new Color (0, 205, 205) });      // 0x00CDCD
+    colorMap.insert ({ "Cyan1", new Color (0, 238, 238) });      // 0x00EEEE
+    colorMap.insert ({ "Cyan2", new Color (0, 205, 205) });      // 0x00CDCD
     colorMap.insert ({ "Dark   Goldenrod ", new Color (184, 134, 11) });      // 0xB8860B
     colorMap.insert ({ "Dark   Goldenrod1", new Color (255, 185, 15) });      // 0xFFB90F
     colorMap.insert ({ "Dark   Goldenrod2", new Color (238, 173, 14) });      // 0xEEAD0E
@@ -343,7 +342,7 @@ void ColorTable::loadColorMap () {
     colorMap.insert ({ "Douglas Fir", new Color (63, 96, 43) });      // 0x3F602B
     colorMap.insert ({ "Dress Blue", new Color (59, 49, 120) });      // 0x3B3178
     colorMap.insert ({ "Dumpster", new Color (0, 79, 0) });      // 0x004F00
-    colorMap.insert ({ "Dustyrose", new Color (133, 99, 99) });      // 0x856363
+    colorMap.insert ({ "Dusty Rose", new Color (133, 99, 99) });      // 0x856363
     colorMap.insert ({ "Eggplant", new Color (129, 102, 135) });      // 0x816687
     colorMap.insert ({ "Eggshell", new Color (252, 230, 201) });      // 0xFCE6C9
     colorMap.insert ({ "Electric Turquoise", new Color (73, 233, 189) });      // 0x49E9BD
@@ -352,7 +351,7 @@ void ColorTable::loadColorMap () {
     colorMap.insert ({ "Emerald Green", new Color (0, 201, 87) });      // 0x00C957
     colorMap.insert ({ "Emerald Green2", new Color (40, 174, 123) });      // 0x28AE7B
     colorMap.insert ({ "England Pound", new Color (104, 133, 113) });      // 0x688571
-    colorMap.insert ({ "Englishred", new Color (212, 61, 26) });      // 0xD43D1A
+    colorMap.insert ({ "English Red", new Color (212, 61, 26) });      // 0xD43D1A
     colorMap.insert ({ "Espresso", new Color (231, 198, 165) });      // 0xE7C6A5
     colorMap.insert ({ "Feldspar", new Color (209, 146, 117) });      // 0xD19275
     colorMap.insert ({ "Fenway Grass", new Color (82, 111, 53) });      // 0x526F35
@@ -542,7 +541,7 @@ void ColorTable::loadColorMap () {
     colorMap.insert ({ "Gummi Green", new Color (36, 211, 48) });      // 0x24D330
     colorMap.insert ({ "Gummi Red", new Color (252, 21, 1) });      // 0xFC1501
     colorMap.insert ({ "Gummi Yellow", new Color (251, 219, 12) });      // 0xFBDB0C
-    colorMap.insert ({ "Harold'S Crayon", new Color (182, 32, 132) });      // 0xB62084
+    colorMap.insert ({ "Harold's Crayon", new Color (182, 32, 132) });      // 0xB62084
     colorMap.insert ({ "Heather Blue", new Color (183, 195, 208) });      // 0xB7C3D0
     colorMap.insert ({ "Hematite", new Color (227, 81, 82) });      // 0xE35152
     colorMap.insert ({ "Holly", new Color (72, 130, 20) });      // 0x488214
@@ -748,10 +747,10 @@ void ColorTable::loadColorMap () {
     colorMap.insert ({ "Naples Yellow Deep", new Color (255, 168, 18) });      // 0xFFA812
     colorMap.insert ({ "Natural Gas", new Color (91, 144, 246) });      // 0x5B90F6
     colorMap.insert ({ "Natural Turquoise", new Color (69, 195, 184) });      // 0x45C3B8
-    colorMap.insert ({ "Navajowhite ", new Color (255, 222, 173) });      // 0xFFDEAD
-    colorMap.insert ({ "Navajowhite2", new Color (238, 207, 161) });      // 0xEECFA1
-    colorMap.insert ({ "Navajowhite3", new Color (205, 179, 139) });      // 0xCDB38B
-    colorMap.insert ({ "Navajowhite4", new Color (139, 121, 94) });      // 0x8B795E
+    colorMap.insert ({ "Navajo White ", new Color (255, 222, 173) });      // 0xFFDEAD
+    colorMap.insert ({ "Navajo White2", new Color (238, 207, 161) });      // 0xEECFA1
+    colorMap.insert ({ "Navajo White3", new Color (205, 179, 139) });      // 0xCDB38B
+    colorMap.insert ({ "Navajo White4", new Color (139, 121, 94) });      // 0x8B795E
     colorMap.insert ({ "Navy ", new Color (0, 0, 128) });      // 0x000080
     colorMap.insert ({ "Navy Blue", new Color (35, 35, 142) });      // 0x23238E
     colorMap.insert ({ "Nectarine", new Color (255, 51, 0) });      // 0xFF3300
@@ -768,8 +767,8 @@ void ColorTable::loadColorMap () {
     colorMap.insert ({ "Night Vision", new Color (123, 204, 112) });      // 0x7BCC70
     colorMap.insert ({ "Nikko Blue", new Color (131, 142, 222) });      // 0x838EDE
     colorMap.insert ({ "Noble Fir", new Color (71, 106, 52) });      // 0x476A34
-    colorMap.insert ({ "Novascotia Salmon", new Color (255, 51, 51) });      // 0xFF3333
-    colorMap.insert ({ "Nypd Blue", new Color (57, 183, 205) });      // 0x39B7CD
+    colorMap.insert ({ "Nova Scotia Salmon", new Color (255, 51, 51) });      // 0xFF3333
+    colorMap.insert ({ "NYPD Blue", new Color (57, 183, 205) });      // 0x39B7CD
     colorMap.insert ({ "Obsidian", new Color (61, 91, 67) });      // 0x3D5B43
     colorMap.insert ({ "Ochre", new Color (204, 119, 34) });      // 0xCC7722
     colorMap.insert ({ "Octopus", new Color (52, 146, 94) });      // 0x34925E
@@ -830,7 +829,7 @@ void ColorTable::loadColorMap () {
     colorMap.insert ({ "Pale Violetred2", new Color (238, 121, 159) });      // 0xEE799F
     colorMap.insert ({ "Pale Violetred3", new Color (205, 104, 137) });      // 0xCD6889
     colorMap.insert ({ "Pale Violetred4", new Color (139, 71, 93) });      // 0x8B475D
-    colorMap.insert ({ "Palegoldenrod ", new Color (238, 232, 170) });      // 0xEEE8AA
+    colorMap.insert ({ "Pale Goldenrod ", new Color (238, 232, 170) });      // 0xEEE8AA
     colorMap.insert ({ "Palm", new Color (96, 131, 65) });      // 0x608341
     colorMap.insert ({ "Papaya", new Color (255, 255, 126) });      // 0xFFFF7E
     colorMap.insert ({ "Papayawhip ", new Color (255, 239, 213) });      // 0xFFEFD5
@@ -892,7 +891,6 @@ void ColorTable::loadColorMap () {
     colorMap.insert ({ "Pumice", new Color (120, 164, 137) });      // 0x78A489
     colorMap.insert ({ "Pummelo Pulp", new Color (245, 120, 90) });      // 0xF5785A
     colorMap.insert ({ "Purple", new Color (160, 32, 240) });      // 0xA020F0
-    colorMap.insert ({ "Purple ", new Color (128, 0, 128) });      // 0x800080
     colorMap.insert ({ "Purple Candy", new Color (189, 160, 203) });      // 0xBDA0CB
     colorMap.insert ({ "Purple Fish", new Color (178, 114, 166) });      // 0xB272A6
     colorMap.insert ({ "Purple Ink", new Color (156, 107, 152) });      // 0x9C6B98
@@ -902,6 +900,7 @@ void ColorTable::loadColorMap () {
     colorMap.insert ({ "Purple2", new Color (145, 44, 238) });      // 0x912CEE
     colorMap.insert ({ "Purple3", new Color (125, 38, 205) });      // 0x7D26CD
     colorMap.insert ({ "Purple4", new Color (85, 26, 139) });      // 0x551A8B
+    colorMap.insert ({ "Purple5", new Color (128, 0, 128) });      // 0x800080
     colorMap.insert ({ "Purple6", new Color (170, 0, 255) });      // 0xAA00FF
     colorMap.insert ({ "Putting", new Color (105, 152, 100) });      // 0x699864
     colorMap.insert ({ "Pyridium Orange", new Color (240, 168, 4) });      // 0xF0A804
@@ -967,22 +966,22 @@ void ColorTable::loadColorMap () {
     colorMap.insert ({ "Sepia", new Color (94, 38, 18) });      // 0x5E2612
     colorMap.insert ({ "Seurat Blue", new Color (115, 154, 197) });      // 0x739AC5
     colorMap.insert ({ "Sgi Beet", new Color (142, 56, 142) });      // 0x8E388E
-    colorMap.insert ({ "Sgi Brightgray", new Color (197, 193, 170) });      // 0xC5C1AA
-    colorMap.insert ({ "Sgi Chartreuse", new Color (113, 198, 113) });      // 0x71C671
-    colorMap.insert ({ "Sgi Light Blue", new Color (125, 158, 192) });      // 0x7D9EC0
-    colorMap.insert ({ "Sgi Light Gray", new Color (170, 170, 170) });      // 0xAAAAAA
-    colorMap.insert ({ "Sgi Olivedrab", new Color (142, 142, 56) });      // 0x8E8E38
-    colorMap.insert ({ "Sgi Salmon", new Color (198, 113, 113) });      // 0xC67171
-    colorMap.insert ({ "Sgi Slate Blue", new Color (113, 113, 198) });      // 0x7171C6
-    colorMap.insert ({ "Sgi Teal", new Color (56, 142, 142) });      // 0x388E8E
+    colorMap.insert ({ "SGI Brightgray", new Color (197, 193, 170) });      // 0xC5C1AA
+    colorMap.insert ({ "SGI Chartreuse", new Color (113, 198, 113) });      // 0x71C671
+    colorMap.insert ({ "SGI Light Blue", new Color (125, 158, 192) });      // 0x7D9EC0
+    colorMap.insert ({ "SGI Light Gray", new Color (170, 170, 170) });      // 0xAAAAAA
+    colorMap.insert ({ "SGI Olivedrab", new Color (142, 142, 56) });      // 0x8E8E38
+    colorMap.insert ({ "SGI Salmon", new Color (198, 113, 113) });      // 0xC67171
+    colorMap.insert ({ "SGI Slate Blue", new Color (113, 113, 198) });      // 0x7171C6
+    colorMap.insert ({ "SGI Teal", new Color (56, 142, 142) });      // 0x388E8E
     colorMap.insert ({ "Shamrock", new Color (64, 102, 77) });      // 0x40664D
     colorMap.insert ({ "Shamrock Shake", new Color (178, 208, 180) });      // 0xB2D0B4
     colorMap.insert ({ "Sienna", new Color (142, 107, 35) });      // 0x8E6B23
-    colorMap.insert ({ "Sienna ", new Color (160, 82, 45) });      // 0xA0522D
     colorMap.insert ({ "Sienna1", new Color (255, 130, 71) });      // 0xFF8247
     colorMap.insert ({ "Sienna2", new Color (238, 121, 66) });      // 0xEE7942
     colorMap.insert ({ "Sienna3", new Color (205, 104, 57) });      // 0xCD6839
     colorMap.insert ({ "Sienna4", new Color (139, 71, 38) });      // 0x8B4726
+    colorMap.insert ({ "Sienna5 ", new Color (160, 82, 45) });      // 0xA0522D
     colorMap.insert ({ "Sign Blue", new Color (0, 63, 135) });      // 0x003F87
     colorMap.insert ({ "Sign Brown", new Color (96, 51, 17) });      // 0x603311
     colorMap.insert ({ "Sign Green", new Color (0, 107, 84) });      // 0x006B54
@@ -990,7 +989,7 @@ void ColorTable::loadColorMap () {
     colorMap.insert ({ "Sign Red", new Color (175, 30, 45) });      // 0xAF1E2D
     colorMap.insert ({ "Sign Yellow", new Color (252, 209, 22) });      // 0xFCD116
     colorMap.insert ({ "Silver", new Color (230, 232, 250) });      // 0xE6E8FA
-    colorMap.insert ({ "Silver ", new Color (192, 192, 192) });      // 0xC0C0C0
+    colorMap.insert ({ "Silver1", new Color (192, 192, 192) });      // 0xC0C0C0
     colorMap.insert ({ "Skyblue ", new Color (135, 206, 235) });      // 0x87CEEB
     colorMap.insert ({ "Skyblue1", new Color (135, 206, 255) });      // 0x87CEFF
     colorMap.insert ({ "Skyblue2", new Color (126, 192, 238) });      // 0x7EC0EE
@@ -1044,7 +1043,7 @@ void ColorTable::loadColorMap () {
     colorMap.insert ({ "Swimming Pool", new Color (103, 230, 236) });      // 0x67E6EC
     colorMap.insert ({ "Tan", new Color (219, 147, 112) });      // 0xDB9370
     colorMap.insert ({ "Tan", new Color (238, 136, 51) });      // 0xEE8833
-    colorMap.insert ({ "Tan ", new Color (210, 180, 140) });      // 0xD2B48C
+    colorMap.insert ({ "Tan3 ", new Color (210, 180, 140) });      // 0xD2B48C
     colorMap.insert ({ "Tan1", new Color (255, 165, 79) });      // 0xFFA54F
     colorMap.insert ({ "Tan2", new Color (238, 154, 73) });      // 0xEE9A49
     colorMap.insert ({ "Tan4", new Color (139, 90, 43) });      // 0x8B5A2B
@@ -1091,8 +1090,8 @@ void ColorTable::loadColorMap () {
     colorMap.insert ({ "Very Dark Brown", new Color (92, 64, 51) });      // 0x5C4033
     colorMap.insert ({ "Very Light Grey", new Color (205, 205, 205) });      // 0xCDCDCD
     colorMap.insert ({ "Violet", new Color (79, 47, 79) });      // 0x4F2F4F
-    colorMap.insert ({ "Violet", new Color (143, 94, 153) });      // 0x8F5E99
-    colorMap.insert ({ "Violet ", new Color (238, 130, 238) });      // 0xEE82EE
+    colorMap.insert ({ "Violet1", new Color (143, 94, 153) });      // 0x8F5E99
+    colorMap.insert ({ "Violet2", new Color (238, 130, 238) });      // 0xEE82EE
     colorMap.insert ({ "Violet Flower", new Color (191, 95, 255) });      // 0xBF5FFF
     colorMap.insert ({ "Violetred", new Color (204, 50, 153) });      // 0xCC3299
     colorMap.insert ({ "Violetred", new Color (208, 32, 144) });      // 0xD02090
@@ -1130,1110 +1129,25 @@ void ColorTable::loadColorMap () {
     colorMap.insert ({ "Yinmn Blue", new Color (46, 80, 144) });      // 0x2E5090
     colorMap.insert ({ "Yolk", new Color (255, 230, 0) });      // 0xFFE600
     colorMap.insert ({ "Zincwhite", new Color (253, 248, 255) });      // 0xFDF8FF
-    colorMap.insert ({ "100 Euro", new Color (134, 198, 124) });      // 0x86C67C
-    colorMap.insert ({ "20 Pound", new Color (164, 101, 130) });      // 0xA46582
-    colorMap.insert ({ "6 Ball", new Color (27, 100, 83) });      // 0x1B6453
 }
 
 /**
  * Creates and loads the Name Map.
  */
-void ColorTable::loadNameMap () {
-    nameMap.insert ({ "000001", "UNKNOWN" });
-    nameMap.insert ({ "1B3F8B","Alaska Sky" });
-    nameMap.insert ({ "F0F8FF","Alice Blue" });
-    nameMap.insert ({ "E32636","Alizarin Crimson" });
-    nameMap.insert ({ "C48E48","Almond" });
-    nameMap.insert ({ "A9ACB6","Aluminum" });
-    nameMap.insert ({ "9D6B84","Amethyst" });
-    nameMap.insert ({ "BAAF07","Anjou Pear" });
-    nameMap.insert ({ "FAEBD7","Antiquewhite " });
-    nameMap.insert ({ "FFEFDB","Antiquewhite1" });
-    nameMap.insert ({ "EEDFCC","Antiquewhite2" });
-    nameMap.insert ({ "CDC0B0","Antiquewhite3" });
-    nameMap.insert ({ "8B8378","Antiquewhite4" });
-    nameMap.insert ({ "CC4E5C","Apple" });
-    nameMap.insert ({ "FBA16C","Apricot" });
-    nameMap.insert ({ "66CCCC","Aqua" });
-    nameMap.insert ({ "37BC61","Aquaman" });
-    nameMap.insert ({ "70DB93","Aquamarine" });
-    nameMap.insert ({ "4E78A0","Aquamarine" });
-    nameMap.insert ({ "7FFFD4","Aquamarine " });
-    nameMap.insert ({ "76EEC6","Aquamarine2" });
-    nameMap.insert ({ "458B74","Aquamarine4" });
-    nameMap.insert ({ "2FAA96","Aquarium" });
-    nameMap.insert ({ "327556","Army Men" });
-    nameMap.insert ({ "353F3E","Army Uniform" });
-    nameMap.insert ({ "C6C3B5","Ash" });
-    nameMap.insert ({ "2A8E82","Atlantic Green" });
-    nameMap.insert ({ "FFA824","Aureoline Yellow" });
-    nameMap.insert ({ "A2C257","Avacado" });
-    nameMap.insert ({ "98A148","Avocado" });
-    nameMap.insert ({ "F0FFFF","Azure " });
-    nameMap.insert ({ "E0EEEE","Azure2" });
-    nameMap.insert ({ "C1CDCD","Azure3" });
-    nameMap.insert ({ "838B8B","Azure4" });
-    nameMap.insert ({ "C65D57","Bacon" });
-    nameMap.insert ({ "5C3317","Bakers Chocolate" });
-    nameMap.insert ({ "E3CF57","Banana" });
-    nameMap.insert ({ "0E8C3A","Banker's Lamp" });
-    nameMap.insert ({ "D4318C","Barney" });
-    nameMap.insert ({ "CDAB2D","Bartlett Pear" });
-    nameMap.insert ({ "D0D2C4","Battleship" });
-    nameMap.insert ({ "EED6AF","Beach Sand" });
-    nameMap.insert ({ "E5BC3B","Beer" });
-    nameMap.insert ({ "F5F5DC","Beige " });
-    nameMap.insert ({ "A39480","Beige Dark " });
-    nameMap.insert ({ "F6C9CC","Bermuda Sand" });
-    nameMap.insert ({ "3A66A7","Big Blue Bus" });
-    nameMap.insert ({ "A02422","Bing Cherry" });
-    nameMap.insert ({ "FFE4C4","Bisque " });
-    nameMap.insert ({ "EED5B7","Bisque2" });
-    nameMap.insert ({ "CDB79E","Bisque3" });
-    nameMap.insert ({ "8B7D6B","Bisque4" });
-    nameMap.insert ({ "000000","Black" });
-    nameMap.insert ({ "422C2F","Black Beauty Plum" });
-    nameMap.insert ({ "3A3A38","Blackberry" });
-    nameMap.insert ({ "FFEBCD","Blanched Almond " });
-    nameMap.insert ({ "CC1100","Blood Orange" });
-    nameMap.insert ({ "660000","Bloodred" });
-    nameMap.insert ({ "0000FF","Blue " });
-    nameMap.insert ({ "2B4F81","Blue Angels" });
-    nameMap.insert ({ "4973AB","Blue Bird" });
-    nameMap.insert ({ "499DF5","Blue Bucket" });
-    nameMap.insert ({ "344152","Blue Corn" });
-    nameMap.insert ({ "584000","Blue Corn Chips" });
-    nameMap.insert ({ "88ACE0","Blue Cow" });
-    nameMap.insert ({ "380474","Blue Deep" });
-    nameMap.insert ({ "525C65","Blue Dog" });
-    nameMap.insert ({ "759B84","Blue Fern" });
-    nameMap.insert ({ "3B4990","Blue Grapes" });
-    nameMap.insert ({ "3B8471","Blue Green Algae" });
-    nameMap.insert ({ "DAF4F0","Blue Ice" });
-    nameMap.insert ({ "74BBFB","Blue Ice" });
-    nameMap.insert ({ "42526C","Blue Jeans" });
-    nameMap.insert ({ "4CB7A5","Blue Lagoon" });
-    nameMap.insert ({ "33A1DE","Blue Line" });
-    nameMap.insert ({ "82CFFD","Blue Mist" });
-    nameMap.insert ({ "7D7F94","Blue Nile" });
-    nameMap.insert ({ "5190ED","Blue Pill" });
-    nameMap.insert ({ "4981CE","Blue Ridge Mtns" });
-    nameMap.insert ({ "6600FF","Blue Safe" });
-    nameMap.insert ({ "6996AD","Blue Shark" });
-    nameMap.insert ({ "26466D","Blue Spider" });
-    nameMap.insert ({ "5D92B1","Blue Sponge" });
-    nameMap.insert ({ "50729F","Blue Stone" });
-    nameMap.insert ({ "3A5894","Blue Train" });
-    nameMap.insert ({ "687C97","Blue Tuna" });
-    nameMap.insert ({ "162252","Blue Velvet" });
-    nameMap.insert ({ "42647F","Blue Whale" });
-    nameMap.insert ({ "0000EE","Blue2" });
-    nameMap.insert ({ "5971AD","Blueberry Fresh" });
-    nameMap.insert ({ "4C7064","Bluegrass" });
-    nameMap.insert ({ "9F5F9F","Blueviolet" });
-    nameMap.insert ({ "8A2BE2","Blueviolet " });
-    nameMap.insert ({ "FFFFCC","Bone" });
-    nameMap.insert ({ "99182C","Bordeaux" });
-    nameMap.insert ({ "1DA237","Bottle Green" });
-    nameMap.insert ({ "BB2A3C","Braeburn Apple" });
-    nameMap.insert ({ "B5A642","Brass" });
-    nameMap.insert ({ "FCD59C","Bread" });
-    nameMap.insert ({ "859C27","Breadfruit" });
-    nameMap.insert ({ "9C661F","Brick" });
-    nameMap.insert ({ "D9D919","Bright Gold" });
-    nameMap.insert ({ "FF0033","Bright Red" });
-    nameMap.insert ({ "FF0066","Broadway Pink" });
-    nameMap.insert ({ "586949","Broccoli" });
-    nameMap.insert ({ "8C7853","Bronze" });
-    nameMap.insert ({ "A67D3D","Bronzeii" });
-    nameMap.insert ({ "802A2A","Brown" });
-    nameMap.insert ({ "DB2929","Brown Madder" });
-    nameMap.insert ({ "87421F","Brown Ochre" });
-    nameMap.insert ({ "8B2500","Brown1" });
-    nameMap.insert ({ "EE3B3B","Brown2" });
-    nameMap.insert ({ "CD3333","Brown3" });
-    nameMap.insert ({ "B6C5BE","Brushed Aluminum" });
-    nameMap.insert ({ "FF92BB","Bubble Gum" });
-    nameMap.insert ({ "A5435C","Bunny Eye" });
-    nameMap.insert ({ "9E0508","Burgundy" });
-    nameMap.insert ({ "DEB887","Burlywood " });
-    nameMap.insert ({ "EEC591","Burlywood2" });
-    nameMap.insert ({ "CDAA7D","Burlywood3" });
-    nameMap.insert ({ "8B7355","Burlywood4" });
-    nameMap.insert ({ "8A360F","Burnt Sienna" });
-    nameMap.insert ({ "8A3324","Burnt Umber" });
-    nameMap.insert ({ "636F57","Cactus" });
-    nameMap.insert ({ "5F9F9F","Cadetblue" });
-    nameMap.insert ({ "98F5FF","Cadetblue1" });
-    nameMap.insert ({ "8EE5EE","Cadetblue2" });
-    nameMap.insert ({ "7AC5CD","Cadetblue3" });
-    nameMap.insert ({ "53868B","Cadetblue4" });
-    nameMap.insert ({ "FFE303","Cadmium Lemon" });
-    nameMap.insert ({ "FF6103","Cadmium Orange" });
-    nameMap.insert ({ "E3170D","Cadmium Red Deep" });
-    nameMap.insert ({ "FF030D","Cadmium Red Light" });
-    nameMap.insert ({ "FF9912","Cadmium Yellow" });
-    nameMap.insert ({ "FFB00F","Cadmium Yellowlight" });
-    nameMap.insert ({ "362819","Cafe Americano" });
-    nameMap.insert ({ "B67C3D","Cafe Au Lait" });
-    nameMap.insert ({ "CFDBC5","Camo1" });
-    nameMap.insert ({ "A9C9A4","Camo2" });
-    nameMap.insert ({ "9DB68C","Camo3" });
-    nameMap.insert ({ "9CA998","Cantaloupe" });
-    nameMap.insert ({ "9D8851","Canvas" });
-    nameMap.insert ({ "B28647","Cappuccino" });
-    nameMap.insert ({ "42C0FB","Caribbean" });
-    nameMap.insert ({ "DE85B1","Carnation" });
-    nameMap.insert ({ "539DC2","Carolina Blue" });
-    nameMap.insert ({ "ED9121","Carrot" });
-    nameMap.insert ({ "DFAE74","Cashew" });
-    nameMap.insert ({ "BEE554","Cat Eye" });
-    nameMap.insert ({ "7AA9DD","Cat Eye2" });
-    nameMap.insert ({ "CFD784","Celery" });
-    nameMap.insert ({ "00611C","Celtics" });
-    nameMap.insert ({ "05B8CC","Cerulean" });
-    nameMap.insert ({ "7FFF00","Chartreuse " });
-    nameMap.insert ({ "BCE937","Chartreuse Verte" });
-    nameMap.insert ({ "76EE00","Chartreuse2" });
-    nameMap.insert ({ "66CD00","Chartreuse3" });
-    nameMap.insert ({ "458B00","Chartreuse4" });
-    nameMap.insert ({ "FFC469","Cheddar" });
-    nameMap.insert ({ "599300","Chemical Suit" });
-    nameMap.insert ({ "EB5E66","Cherry" });
-    nameMap.insert ({ "D44942","Chili" });
-    nameMap.insert ({ "C73F17","Chili Powder" });
-    nameMap.insert ({ "993300","Chocolate" });
-    nameMap.insert ({ "D2691E","Chocolate " });
-    nameMap.insert ({ "FF7F24","Chocolate1" });
-    nameMap.insert ({ "EE7621","Chocolate2" });
-    nameMap.insert ({ "CD661D","Chocolate3" });
-    nameMap.insert ({ "E8F1D4","Chrome" });
-    nameMap.insert ({ "668014","Chrome Oxide Green" });
-    nameMap.insert ({ "003EFF","Cichlid" });
-    nameMap.insert ({ "61B329","Cinnabar Green" });
-    nameMap.insert ({ "AA6600","Cinnamon" });
-    nameMap.insert ({ "7B3F00","Cinnamon" });
-    nameMap.insert ({ "3A6629","Circuit Board" });
-    nameMap.insert ({ "3EA055","Clover" });
-    nameMap.insert ({ "6666FF","Cobalt" });
-    nameMap.insert ({ "3D59AB","Cobalt" });
-    nameMap.insert ({ "3D9140","Cobalt Green" });
-    nameMap.insert ({ "91219E","Cobalt Violet Deep" });
-    nameMap.insert ({ "FFFCCF","Coconut" });
-    nameMap.insert ({ "BC7642","Coconut Shell" });
-    nameMap.insert ({ "AA5303","Coffee" });
-    nameMap.insert ({ "79A888","Coke Bottle" });
-    nameMap.insert ({ "AF4035","Cola" });
-    nameMap.insert ({ "808A87","Cold Grey" });
-    nameMap.insert ({ "D0A9AA","Conch" });
-    nameMap.insert ({ "660198","Concord Grape" });
-    nameMap.insert ({ "D98719","Cool Copper" });
-    nameMap.insert ({ "90FEFB","Cool Mint" });
-    nameMap.insert ({ "284942","Cooler" });
-    nameMap.insert ({ "B87333","Copper" });
-    nameMap.insert ({ "FF7F50","Coral " });
-    nameMap.insert ({ "FF7256","Coral1" });
-    nameMap.insert ({ "EE6A50","Coral2" });
-    nameMap.insert ({ "CD5B45","Coral3" });
-    nameMap.insert ({ "8B3E2F","Coral4" });
-    nameMap.insert ({ "ECC8EC","Corfu Pink" });
-    nameMap.insert ({ "FBEC5D","Corn" });
-    nameMap.insert ({ "3300FF","Cornflower" });
-    nameMap.insert ({ "42426F","Cornflower Blue" });
-    nameMap.insert ({ "6495ED","Cornflower Blue 2" });
-    nameMap.insert ({ "FFF8DC","Cornsilk " });
-    nameMap.insert ({ "EEE8CD","Cornsilk2" });
-    nameMap.insert ({ "CDC8B1","Cornsilk3" });
-    nameMap.insert ({ "8B8878","Cornsilk4" });
-    nameMap.insert ({ "F7B3DA","Cotton Candy" });
-    nameMap.insert ({ "B6316C","Cranberry" });
-    nameMap.insert ({ "F54D70","Cranberry Jello" });
-    nameMap.insert ({ "C76E06","Crema" });
-    nameMap.insert ({ "DC143C","Crimson " });
-    nameMap.insert ({ "2C5D3F","Cucumber" });
-    nameMap.insert ({ "5B59BA","Curacao" });
-    nameMap.insert ({ "00FFFF","Cyan " });
-    nameMap.insert ({ "00EEEE","Cyan2" });
-    nameMap.insert ({ "00CDCD","Cyan3" });
-    nameMap.insert ({ "B8860B","Dark   Goldenrod " });
-    nameMap.insert ({ "FFB90F","Dark   Goldenrod1" });
-    nameMap.insert ({ "EEAD0E","Dark   Goldenrod2" });
-    nameMap.insert ({ "CD950C","Dark   Goldenrod3" });
-    nameMap.insert ({ "00008B","Dark  Blue " });
-    nameMap.insert ({ "330000","Dark  Cherry Red" });
-    nameMap.insert ({ "008B8B","Dark  Cyan " });
-    nameMap.insert ({ "8B6508","Dark  Goldenrod4" });
-    nameMap.insert ({ "A9A9A9","Dark  Gray " });
-    nameMap.insert ({ "2F4F2F","Dark  Green" });
-    nameMap.insert ({ "006400","Dark  Green " });
-    nameMap.insert ({ "4A766E","Dark  Green Copper" });
-    nameMap.insert ({ "A9A9A9","Dark  Grey " });
-    nameMap.insert ({ "BDB76B","Dark  Khaki " });
-    nameMap.insert ({ "E8C782","Dark  Wheat" });
-    nameMap.insert ({ "8B008B","Dark Magenta " });
-    nameMap.insert ({ "4F4F2F","Dark Olivegreen" });
-    nameMap.insert ({ "556B2F","Dark Olivegreen " });
-    nameMap.insert ({ "CAFF70","Dark Olivegreen1" });
-    nameMap.insert ({ "BCEE68","Dark Olivegreen2" });
-    nameMap.insert ({ "A2CD5A","Dark Olivegreen3" });
-    nameMap.insert ({ "6E8B3D","Dark Olivegreen4" });
-    nameMap.insert ({ "FF8C00","Dark Orange " });
-    nameMap.insert ({ "FF7F00","Dark Orange1" });
-    nameMap.insert ({ "EE7600","Dark Orange2" });
-    nameMap.insert ({ "CD6600","Dark Orange3" });
-    nameMap.insert ({ "8B4500","Dark Orange4" });
-    nameMap.insert ({ "FF8600","Dark Orange5" });
-    nameMap.insert ({ "9932CD","Dark Orchid" });
-    nameMap.insert ({ "9932CC","Dark Orchid " });
-    nameMap.insert ({ "B23AEE","Dark Orchid2" });
-    nameMap.insert ({ "9A32CD","Dark Orchid3" });
-    nameMap.insert ({ "68228B","Dark Orchid4" });
-    nameMap.insert ({ "871F78","Dark Purple" });
-    nameMap.insert ({ "8B0000","Dark Red " });
-    nameMap.insert ({ "E9967A","Dark Salmon " });
-    nameMap.insert ({ "8FBC8F","Dark Seagreen " });
-    nameMap.insert ({ "C1FFC1","Dark Seagreen1" });
-    nameMap.insert ({ "B4EEB4","Dark Seagreen2" });
-    nameMap.insert ({ "9BCD9B","Dark Seagreen3" });
-    nameMap.insert ({ "698B69","Dark Seagreen4" });
-    nameMap.insert ({ "6B238E","Dark Slateblue" });
-    nameMap.insert ({ "483D8B","Dark Slateblue " });
-    nameMap.insert ({ "2F4F4F","Dark Slategray " });
-    nameMap.insert ({ "97FFFF","Dark Slategray1" });
-    nameMap.insert ({ "8DEEEE","Dark Slategray2" });
-    nameMap.insert ({ "79CDCD","Dark Slategray3" });
-    nameMap.insert ({ "528B8B","Dark Slategray4" });
-    nameMap.insert ({ "2F4F4F","Dark Slategrey " });
-    nameMap.insert ({ "97694F","Dark Tan" });
-    nameMap.insert ({ "7093DB","Dark Turquoise" });
-    nameMap.insert ({ "00CED1","Dark Turquoise " });
-    nameMap.insert ({ "9400D3","Dark Violet " });
-    nameMap.insert ({ "855000","Dark Wood" });
-    nameMap.insert ({ "733D1A","Deep Ochre" });
-    nameMap.insert ({ "FF1493","Deep Pink " });
-    nameMap.insert ({ "EE1289","Deep Pink2" });
-    nameMap.insert ({ "CD1076","Deep Pink3" });
-    nameMap.insert ({ "8B0A50","Deep Pink4" });
-    nameMap.insert ({ "551033","Deep Purple" });
-    nameMap.insert ({ "00BFFF","Deep Skyblue " });
-    nameMap.insert ({ "00B2EE","Deep Skyblue2" });
-    nameMap.insert ({ "009ACD","Deep Skyblue3" });
-    nameMap.insert ({ "00688B","Deep Skyblue4" });
-    nameMap.insert ({ "22316C","Delft" });
-    nameMap.insert ({ "4372AA","Denim" });
-    nameMap.insert ({ "FEE8D6","Desert Sand" });
-    nameMap.insert ({ "0EBFE9","Diamond Blue" });
-    nameMap.insert ({ "696969","Dimgray " });
-    nameMap.insert ({ "696969","Dimgrey " });
-    nameMap.insert ({ "1E90FF","Dodgerblue " });
-    nameMap.insert ({ "1C86EE","Dodgerblue2" });
-    nameMap.insert ({ "1874CD","Dodgerblue3" });
-    nameMap.insert ({ "104E8B","Dodgerblue4" });
-    nameMap.insert ({ "F6A4D5","Dog Tongue" });
-    nameMap.insert ({ "6F7285","Dolphin" });
-    nameMap.insert ({ "3F602B","Douglas Fir" });
-    nameMap.insert ({ "3B3178","Dress Blue" });
-    nameMap.insert ({ "004F00","Dumpster" });
-    nameMap.insert ({ "856363","Dustyrose" });
-    nameMap.insert ({ "816687","Eggplant" });
-    nameMap.insert ({ "FCE6C9","Eggshell" });
-    nameMap.insert ({ "49E9BD","Electric Turquoise" });
-    nameMap.insert ({ "5B9C64","Emerald" });
-    nameMap.insert ({ "20BF9F","Emerald City" });
-    nameMap.insert ({ "00C957","Emerald Green" });
-    nameMap.insert ({ "28AE7B","Emerald Green2" });
-    nameMap.insert ({ "688571","England Pound" });
-    nameMap.insert ({ "D43D1A","Englishred" });
-    nameMap.insert ({ "E7C6A5","Espresso" });
-    nameMap.insert ({ "D19275","Feldspar" });
-    nameMap.insert ({ "526F35","Fenway Grass" });
-    nameMap.insert ({ "4A777A","Fenway Monster" });
-    nameMap.insert ({ "CDD704","Fire Truck Green" });
-    nameMap.insert ({ "B22222","Firebrick " });
-    nameMap.insert ({ "FF3030","Firebrick1" });
-    nameMap.insert ({ "EE2C2C","Firebrick2" });
-    nameMap.insert ({ "CD2626","Firebrick3" });
-    nameMap.insert ({ "8B1A1A","Firebrick4" });
-    nameMap.insert ({ "8E2323","Firebrick5" });
-    nameMap.insert ({ "607C6E","Fisherman's Float" });
-    nameMap.insert ({ "FFCCCC","Flat Pink" });
-    nameMap.insert ({ "FF5721","Flesh Ochre" });
-    nameMap.insert ({ "FFFAF0","Floral White " });
-    nameMap.insert ({ "CBCAB6","Fog" });
-    nameMap.insert ({ "567E3A","Forestgreen2" });
-    nameMap.insert ({ "7EB6FF","Forget Me Nots" });
-    nameMap.insert ({ "4D6B50","Fraser Fir" });
-    nameMap.insert ({ "5EDA9E","Fresh Green" });
-    nameMap.insert ({ "84BE6A","Frog" });
-    nameMap.insert ({ "FF00FF","Fuchsia " });
-    nameMap.insert ({ "FF00AA","Fuchsia2" });
-    nameMap.insert ({ "D66F62","Fuji Apple" });
-    nameMap.insert ({ "DCDCDC","Gainsboro " });
-    nameMap.insert ({ "777733","Ganegreen" });
-    nameMap.insert ({ "138F6A","Garden Hose" });
-    nameMap.insert ({ "71637D","Garden Plum" });
-    nameMap.insert ({ "E31230","Geranium Lake" });
-    nameMap.insert ({ "F8F8FF","Ghostwhite " });
-    nameMap.insert ({ "43D58C","Go" });
-    nameMap.insert ({ "FFD700","Gold " });
-    nameMap.insert ({ "AADD00","Gold Green" });
-    nameMap.insert ({ "C77826","Gold Ochre" });
-    nameMap.insert ({ "EEC900","Gold2" });
-    nameMap.insert ({ "CDAD00","Gold3" });
-    nameMap.insert ({ "8B7500","Gold4" });
-    nameMap.insert ({ "CC7F32","Gold5" });
-    nameMap.insert ({ "CD7F32","Gold6" });
-    nameMap.insert ({ "FFAA00","Gold7" });
-    nameMap.insert ({ "EDCB62","Golden Delicious Apple" });
-    nameMap.insert ({ "DBDB70","Goldenrod" });
-    nameMap.insert ({ "DAA520","Goldenrod " });
-    nameMap.insert ({ "FFC125","Goldenrod1" });
-    nameMap.insert ({ "EEB422","Goldenrod2" });
-    nameMap.insert ({ "CD9B1D","Goldenrod3" });
-    nameMap.insert ({ "8B6914","Goldenrod4" });
-    nameMap.insert ({ "543948","Grape" });
-    nameMap.insert ({ "CC00FF","Grape" });
-    nameMap.insert ({ "F3E88E","Grapefruit" });
-    nameMap.insert ({ "4DBD33","Grass" });
-    nameMap.insert ({ "BEBEBE","Gray" });
-    nameMap.insert ({ "808080","Gray " });
-    nameMap.insert ({ "030303","Gray1" });
-    nameMap.insert ({ "1A1A1A","Gray10" });
-    nameMap.insert ({ "1C1C1C","Gray11" });
-    nameMap.insert ({ "1F1F1F","Gray12" });
-    nameMap.insert ({ "212121","Gray13" });
-    nameMap.insert ({ "242424","Gray14" });
-    nameMap.insert ({ "262626","Gray15" });
-    nameMap.insert ({ "292929","Gray16" });
-    nameMap.insert ({ "2B2B2B","Gray17" });
-    nameMap.insert ({ "2E2E2E","Gray18" });
-    nameMap.insert ({ "303030","Gray19" });
-    nameMap.insert ({ "050505","Gray2" });
-    nameMap.insert ({ "333333","Gray20" });
-    nameMap.insert ({ "363636","Gray21" });
-    nameMap.insert ({ "383838","Gray22" });
-    nameMap.insert ({ "3B3B3B","Gray23" });
-    nameMap.insert ({ "3D3D3D","Gray24" });
-    nameMap.insert ({ "404040","Gray25" });
-    nameMap.insert ({ "424242","Gray26" });
-    nameMap.insert ({ "454545","Gray27" });
-    nameMap.insert ({ "474747","Gray28" });
-    nameMap.insert ({ "4A4A4A","Gray29" });
-    nameMap.insert ({ "80808","Gray3" });
-    nameMap.insert ({ "4D4D4D","Gray30" });
-    nameMap.insert ({ "4F4F4F","Gray31" });
-    nameMap.insert ({ "525252","Gray32" });
-    nameMap.insert ({ "555555","Gray33" });
-    nameMap.insert ({ "575757","Gray34" });
-    nameMap.insert ({ "595959","Gray35" });
-    nameMap.insert ({ "5C5C5C","Gray36" });
-    nameMap.insert ({ "5E5E5E","Gray37" });
-    nameMap.insert ({ "616161","Gray38" });
-    nameMap.insert ({ "636363","Gray39" });
-    nameMap.insert ({ "0A0A0A","Gray4" });
-    nameMap.insert ({ "666666","Gray40" });
-    nameMap.insert ({ "6B6B6B","Gray42" });
-    nameMap.insert ({ "6E6E6E","Gray43" });
-    nameMap.insert ({ "707070","Gray44" });
-    nameMap.insert ({ "737373","Gray45" });
-    nameMap.insert ({ "757575","Gray46" });
-    nameMap.insert ({ "787878","Gray47" });
-    nameMap.insert ({ "7A7A7A","Gray48" });
-    nameMap.insert ({ "7D7D7D","Gray49" });
-    nameMap.insert ({ "0D0D0D","Gray5" });
-    nameMap.insert ({ "7F7F7F","Gray50" });
-    nameMap.insert ({ "828282","Gray51" });
-    nameMap.insert ({ "858585","Gray52" });
-    nameMap.insert ({ "878787","Gray53" });
-    nameMap.insert ({ "8A8A8A","Gray54" });
-    nameMap.insert ({ "8C8C8C","Gray55" });
-    nameMap.insert ({ "8F8F8F","Gray56" });
-    nameMap.insert ({ "919191","Gray57" });
-    nameMap.insert ({ "949494","Gray58" });
-    nameMap.insert ({ "969696","Gray59" });
-    nameMap.insert ({ "0F0F0F","Gray6" });
-    nameMap.insert ({ "999999","Gray60" });
-    nameMap.insert ({ "9C9C9C","Gray61" });
-    nameMap.insert ({ "9E9E9E","Gray62" });
-    nameMap.insert ({ "A1A1A1","Gray63" });
-    nameMap.insert ({ "A3A3A3","Gray64" });
-    nameMap.insert ({ "A6A6A6","Gray65" });
-    nameMap.insert ({ "A8A8A8","Gray66" });
-    nameMap.insert ({ "ABABAB","Gray67" });
-    nameMap.insert ({ "ADADAD","Gray68" });
-    nameMap.insert ({ "B0B0B0","Gray69" });
-    nameMap.insert ({ "121212","Gray7" });
-    nameMap.insert ({ "B3B3B3","Gray70" });
-    nameMap.insert ({ "B5B5B5","Gray71" });
-    nameMap.insert ({ "B8B8B8","Gray72" });
-    nameMap.insert ({ "BABABA","Gray73" });
-    nameMap.insert ({ "BDBDBD","Gray74" });
-    nameMap.insert ({ "BFBFBF","Gray75" });
-    nameMap.insert ({ "C2C2C2","Gray76" });
-    nameMap.insert ({ "C4C4C4","Gray77" });
-    nameMap.insert ({ "C7C7C7","Gray78" });
-    nameMap.insert ({ "C9C9C9","Gray79" });
-    nameMap.insert ({ "141414","Gray8" });
-    nameMap.insert ({ "CCCCCC","Gray80" });
-    nameMap.insert ({ "CFCFCF","Gray81" });
-    nameMap.insert ({ "D1D1D1","Gray82" });
-    nameMap.insert ({ "D4D4D4","Gray83" });
-    nameMap.insert ({ "D6D6D6","Gray84" });
-    nameMap.insert ({ "D9D9D9","Gray85" });
-    nameMap.insert ({ "DBDBDB","Gray86" });
-    nameMap.insert ({ "DEDEDE","Gray87" });
-    nameMap.insert ({ "E0E0E0","Gray88" });
-    nameMap.insert ({ "E3E3E3","Gray89" });
-    nameMap.insert ({ "171717","Gray9" });
-    nameMap.insert ({ "E5E5E5","Gray90" });
-    nameMap.insert ({ "E8E8E8","Gray91" });
-    nameMap.insert ({ "EBEBEB","Gray92" });
-    nameMap.insert ({ "EDEDED","Gray93" });
-    nameMap.insert ({ "F0F0F0","Gray94" });
-    nameMap.insert ({ "F2F2F2","Gray95" });
-    nameMap.insert ({ "F7F7F7","Gray97" });
-    nameMap.insert ({ "FAFAFA","Gray98" });
-    nameMap.insert ({ "FCFCFC","Gray99" });
-    nameMap.insert ({ "3B6AA0","Greek Roof" });
-    nameMap.insert ({ "008000","Green " });
-    nameMap.insert ({ "457371","Green Agate" });
-    nameMap.insert ({ "63AB62","Green Algae" });
-    nameMap.insert ({ "629632","Green Apple" });
-    nameMap.insert ({ "6.68E+88","Green Ash" });
-    nameMap.insert ({ "597368","Green Bark" });
-    nameMap.insert ({ "D0FAEE","Green Card" });
-    nameMap.insert ({ "8FA880","Green Cheese" });
-    nameMap.insert ({ "3E766D","Green Gables" });
-    nameMap.insert ({ "77896C","Green Goo" });
-    nameMap.insert ({ "CECC15","Green Grape" });
-    nameMap.insert ({ "395D33","Green Grass Of Home" });
-    nameMap.insert ({ "6A8455","Green Hornet" });
-    nameMap.insert ({ "3D8B37","Green Lantern" });
-    nameMap.insert ({ "5DFC0A","Green Led" });
-    nameMap.insert ({ "329555","Green Line" });
-    nameMap.insert ({ "BCED91","Green Mist" });
-    nameMap.insert ({ "4BB74C","Green MM" });
-    nameMap.insert ({ "7BBF6A","Green Moth" });
-    nameMap.insert ({ "3E6B4F","Green Party" });
-    nameMap.insert ({ "397D02","Green Pepper" });
-    nameMap.insert ({ "8AA37B","Green Quartz" });
-    nameMap.insert ({ "4F8E83","Green Scrubs" });
-    nameMap.insert ({ "8CDD81","Green Soap" });
-    nameMap.insert ({ "517B58","Green Stamp" });
-    nameMap.insert ({ "3F9E4D","Green Taxi" });
-    nameMap.insert ({ "4D7865","Green Visor" });
-    nameMap.insert ({ "00EE00","Green2" });
-    nameMap.insert ({ "00CD00","Green3" });
-    nameMap.insert ({ "008B00","Green4" });
-    nameMap.insert ({ "527F76","Greencopper" });
-    nameMap.insert ({ "93DB70","Greenyellow" });
-    nameMap.insert ({ "ADFF2F","Greenyellow " });
-    nameMap.insert ({ "808080","Grey " });
-    nameMap.insert ({ "A6D785","Guacamole" });
-    nameMap.insert ({ "24D330","Gummi Green" });
-    nameMap.insert ({ "FC1501","Gummi Red" });
-    nameMap.insert ({ "FBDB0C","Gummi Yellow" });
-    nameMap.insert ({ "B62084","Harold'S Crayon" });
-    nameMap.insert ({ "B7C3D0","Heather Blue" });
-    nameMap.insert ({ "E35152","Hematite" });
-    nameMap.insert ({ "488214","Holly" });
-    nameMap.insert ({ "FEE5AC","Honey" });
-    nameMap.insert ({ "F0FFF0","Honeydew " });
-    nameMap.insert ({ "E0EEE0","Honeydew2" });
-    nameMap.insert ({ "C1CDC1","Honeydew3" });
-    nameMap.insert ({ "838B83","Honeydew4" });
-    nameMap.insert ({ "FF69B4","Hotpink " });
-    nameMap.insert ({ "FF6EB4","Hotpink1" });
-    nameMap.insert ({ "EE6AA7","Hotpink2" });
-    nameMap.insert ({ "CD6090","Hotpink3" });
-    nameMap.insert ({ "8B3A62","Hotpink4" });
-    nameMap.insert ({ "215000","Huntergreen" });
-    nameMap.insert ({ "CDE472","Iceberg Lettuce" });
-    nameMap.insert ({ "B0171F","Indianred" });
-    nameMap.insert ({ "CD5C5C","Indianred " });
-    nameMap.insert ({ "FF6A6A","Indianred1" });
-    nameMap.insert ({ "EE6363","Indianred2" });
-    nameMap.insert ({ "CD5555","Indianred3" });
-    nameMap.insert ({ "8B3A3A","Indianred4" });
-    nameMap.insert ({ "05E9FF","Indiglo" });
-    nameMap.insert ({ "2E0854","Indigo" });
-    nameMap.insert ({ "4B0082","Indigo " });
-    nameMap.insert ({ "0D4F8B","Indigo Dye" });
-    nameMap.insert ({ "72587F","Indigo Tile" });
-    nameMap.insert ({ "218868","Indigo2" });
-    nameMap.insert ({ "009900","Irish Flag" });
-    nameMap.insert ({ "426352","Isle Royale Greenstone" });
-    nameMap.insert ({ "FFFFF0","Ivory " });
-    nameMap.insert ({ "EEEEE0","Ivory2" });
-    nameMap.insert ({ "CDCDC1","Ivory3" });
-    nameMap.insert ({ "8B8B83","Ivory4" });
-    nameMap.insert ({ "292421","Ivoryblack" });
-    nameMap.insert ({ "414F12","Jack Pine" });
-    nameMap.insert ({ "9CCB19","Jolly Green" });
-    nameMap.insert ({ "B3432B","Jonathan Apple" });
-    nameMap.insert ({ "4A7023","Kakapo" });
-    nameMap.insert ({ "4CBB17","Kelly" });
-    nameMap.insert ({ "A2BC13","Kermit" });
-    nameMap.insert ({ "B3C95A","Key Lime Pie" });
-    nameMap.insert ({ "9F9F5F","Khaki" });
-    nameMap.insert ({ "F0E68C","Khaki " });
-    nameMap.insert ({ "FFF68F","Khaki1" });
-    nameMap.insert ({ "EEE685","Khaki2" });
-    nameMap.insert ({ "CDC673","Khaki3" });
-    nameMap.insert ({ "8B864E","Khaki4" });
-    nameMap.insert ({ "B13E0F","Kidney Bean" });
-    nameMap.insert ({ "7F9A65","Kiwi" });
-    nameMap.insert ({ "DC8909","Kumquat" });
-    nameMap.insert ({ "60AFFE","La Maison Bleue" });
-    nameMap.insert ({ "6183A6","Lake Erie" });
-    nameMap.insert ({ "5D7B93","Lake Huron" });
-    nameMap.insert ({ "4D71A3","Lake Ontario" });
-    nameMap.insert ({ "506987","Lake Superior" });
-    nameMap.insert ({ "2E473B","Lampblack" });
-    nameMap.insert ({ "9F703A","Latte" });
-    nameMap.insert ({ "CC99CC","Lavender" });
-    nameMap.insert ({ "E6E6FA","Lavender " });
-    nameMap.insert ({ "754C78","Lavender Field" });
-    nameMap.insert ({ "FFF0F5","Lavenderblush " });
-    nameMap.insert ({ "EEE0E5","Lavenderblush2" });
-    nameMap.insert ({ "CDC1C5","Lavenderblush3" });
-    nameMap.insert ({ "8B8386","Lavenderblush4" });
-    nameMap.insert ({ "7CFC00","Lawngreen " });
-    nameMap.insert ({ "91B49C","Lcd Back" });
-    nameMap.insert ({ "507786","Lcd Dark " });
-    nameMap.insert ({ "55AE3A","Leaf" });
-    nameMap.insert ({ "D6C537","Lemon" });
-    nameMap.insert ({ "FFFACD","Lemonchiffon " });
-    nameMap.insert ({ "EEE9BF","Lemonchiffon2" });
-    nameMap.insert ({ "CDC9A5","Lemonchiffon3" });
-    nameMap.insert ({ "8B8970","Lemonchiffon4" });
-    nameMap.insert ({ "A4DCD1","Liberty" });
-    nameMap.insert ({ "C0D9AF","Lichen" });
-    nameMap.insert ({ "C0D9D9","Light Blue" });
-    nameMap.insert ({ "8FD8D8","Light Blue" });
-    nameMap.insert ({ "ADD8E6","Light Blue " });
-    nameMap.insert ({ "BFEFFF","Light Blue1" });
-    nameMap.insert ({ "9AC0CD","Light Blue3" });
-    nameMap.insert ({ "68838B","Light Blue4" });
-    nameMap.insert ({ "EDC393","Light Copper" });
-    nameMap.insert ({ "F08080","Light Coral " });
-    nameMap.insert ({ "E0FFFF","Light Cyan " });
-    nameMap.insert ({ "D1EEEE","Light Cyan2" });
-    nameMap.insert ({ "B4CDCD","Light Cyan3" });
-    nameMap.insert ({ "7A8B8B","Light Cyan4" });
-    nameMap.insert ({ "EEDD82","Light Goldenrod" });
-    nameMap.insert ({ "FAFAD2","Light Goldenrod Yellow " });
-    nameMap.insert ({ "FFEC8B","Light Goldenrod1" });
-    nameMap.insert ({ "EEDC82","Light Goldenrod2" });
-    nameMap.insert ({ "CDBE70","Light Goldenrod3" });
-    nameMap.insert ({ "8B814C","Light Goldenrod4" });
-    nameMap.insert ({ "D3D3D3","Light Gray " });
-    nameMap.insert ({ "90EE90","Light Green " });
-    nameMap.insert ({ "D3D3D3","Light Grey " });
-    nameMap.insert ({ "FFB6C1","Light Pink " });
-    nameMap.insert ({ "FFAEB9","Light Pink1" });
-    nameMap.insert ({ "EEA2AD","Light Pink2" });
-    nameMap.insert ({ "CD8C95","Light Pink3" });
-    nameMap.insert ({ "8B5F65","Light Pink4" });
-    nameMap.insert ({ "FFA07A","Light Salmon " });
-    nameMap.insert ({ "EE9572","Light Salmon2" });
-    nameMap.insert ({ "CD8162","Light Salmon3" });
-    nameMap.insert ({ "8B5742","Light Salmon4" });
-    nameMap.insert ({ "20B2AA","Light Seagreen " });
-    nameMap.insert ({ "87CEFA","Light Skyblue " });
-    nameMap.insert ({ "B0E2FF","Light Skyblue1" });
-    nameMap.insert ({ "A4D3EE","Light Skyblue2" });
-    nameMap.insert ({ "8DB6CD","Light Skyblue3" });
-    nameMap.insert ({ "607B8B","Light Skyblue4" });
-    nameMap.insert ({ "8470FF","Light Slateblue" });
-    nameMap.insert ({ "778899","Light Slategray" });
-    nameMap.insert ({ "778899","Light Slategrey" });
-    nameMap.insert ({ "8F8FBC","Light Steelblue" });
-    nameMap.insert ({ "B0C4DE","Light Steelblue " });
-    nameMap.insert ({ "CAE1FF","Light Steelblue1" });
-    nameMap.insert ({ "BCD2EE","Light Steelblue2" });
-    nameMap.insert ({ "A2B5CD","Light Steelblue3" });
-    nameMap.insert ({ "6E7B8B","Light Steelblue4" });
-    nameMap.insert ({ "00FFCC","Light Teal" });
-    nameMap.insert ({ "E9C2A6","Light Wood" });
-    nameMap.insert ({ "FFFFE0","Light Yellow " });
-    nameMap.insert ({ "EEEED1","Light Yellow2" });
-    nameMap.insert ({ "CDCDB4","Light Yellow3" });
-    nameMap.insert ({ "8B8B7A","Light Yellow4" });
-    nameMap.insert ({ "00FF00","Lime " });
-    nameMap.insert ({ "32CD32","Lime Green " });
-    nameMap.insert ({ "D4ED91","Lime Pulp" });
-    nameMap.insert ({ "324F17","Lime Rind" });
-    nameMap.insert ({ "65909A","Lindsay Eyes" });
-    nameMap.insert ({ "FAF0E6","Linen " });
-    nameMap.insert ({ "325C74","Liz Eyes" });
-    nameMap.insert ({ "5A6351","Lizard" });
-    nameMap.insert ({ "E32E30","Madder Lake Deep" });
-    nameMap.insert ({ "FF00FF","Magenta" });
-    nameMap.insert ({ "EE00EE","Magenta2" });
-    nameMap.insert ({ "CD00CD","Magenta3" });
-    nameMap.insert ({ "3063A5","Mailbox" });
-    nameMap.insert ({ "108070","Malachite" });
-    nameMap.insert ({ "517693","Malta Blue" });
-    nameMap.insert ({ "B0A6A4","Manatee Gray" });
-    nameMap.insert ({ "E47833","Mandarian Orange" });
-    nameMap.insert ({ "03A89E","Manganese Blue" });
-    nameMap.insert ({ "800000","Maroon " });
-    nameMap.insert ({ "FF34B3","Maroon1" });
-    nameMap.insert ({ "CD2990","Maroon3" });
-    nameMap.insert ({ "8B1C62","Maroon4" });
-    nameMap.insert ({ "691F01","Maroon5" });
-    nameMap.insert ({ "8E236B","Maroon6" });
-    nameMap.insert ({ "B03060","Maroonb0" });
-    nameMap.insert ({ "964514","Mars Orange" });
-    nameMap.insert ({ "E3701A","Mars Yellow" });
-    nameMap.insert ({ "8BA446","Martini Olive" });
-    nameMap.insert ({ "174038","Masters Jacket" });
-    nameMap.insert ({ "3E766D","Mediterranean" });
-    nameMap.insert ({ "66CDAA","Medium Aquamarine " });
-    nameMap.insert ({ "32CC99","Medium Aquamarine2" });
-    nameMap.insert ({ "32CD99","Medium Aquamarine3" });
-    nameMap.insert ({ "3232CC","Medium Blue" });
-    nameMap.insert ({ "0000CD","Medium Blue " });
-    nameMap.insert ({ "3232CD","Medium Blue2" });
-    nameMap.insert ({ "EAEAAE","Medium Goldenrod" });
-    nameMap.insert ({ "BA55D3","Medium Orchid " });
-    nameMap.insert ({ "E066FF","Medium Orchid1" });
-    nameMap.insert ({ "D15FEE","Medium Orchid2" });
-    nameMap.insert ({ "B452CD","Medium Orchid3" });
-    nameMap.insert ({ "7A378B","Medium Orchid4" });
-    nameMap.insert ({ "9370DB","Medium Purple " });
-    nameMap.insert ({ "AB82FF","Medium Purple1" });
-    nameMap.insert ({ "9F79EE","Medium Purple2" });
-    nameMap.insert ({ "8968CD","Medium Purple3" });
-    nameMap.insert ({ "5D478B","Medium Purple4" });
-    nameMap.insert ({ "426F42","Medium Seagreen" });
-    nameMap.insert ({ "3CB371","Medium Seagreen " });
-    nameMap.insert ({ "7B68EE","Medium Slateblue " });
-    nameMap.insert ({ "7F00FF","Medium Slateblue2" });
-    nameMap.insert ({ "00FA9A","Medium Springgreen " });
-    nameMap.insert ({ "70DBDB","Medium Turquoise" });
-    nameMap.insert ({ "48D1CC","Medium Turquoise " });
-    nameMap.insert ({ "C71585","Medium Violetred " });
-    nameMap.insert ({ "A68064","Medium Wood" });
-    nameMap.insert ({ "E3A869","Melon" });
-    nameMap.insert ({ "DFFFA5","Melonrind Green" });
-    nameMap.insert ({ "37FDFC","Metallic Mint" });
-    nameMap.insert ({ "191970","Midnight Blue " });
-    nameMap.insert ({ "000033","Midnight Blue2" });
-    nameMap.insert ({ "2F2F4F","Midnightblue" });
-    nameMap.insert ({ "DBFEF8","Mint Blue" });
-    nameMap.insert ({ "9CBA7F","Mint Candy" });
-    nameMap.insert ({ "BDFCC9","Mint Green" });
-    nameMap.insert ({ "C5E3BF","Mint Ice Cream" });
-    nameMap.insert ({ "F5FFFA","Mintcream " });
-    nameMap.insert ({ "FFE4E1","Mistyrose " });
-    nameMap.insert ({ "EED5D2","Mistyrose2" });
-    nameMap.insert ({ "CDB7B5","Mistyrose3" });
-    nameMap.insert ({ "8B7D7B","Mistyrose4" });
-    nameMap.insert ({ "FFE4B5","Moccasin " });
-    nameMap.insert ({ "C9AF94","Mocha Latte" });
-    nameMap.insert ({ "DBE6E0","Moon" });
-    nameMap.insert ({ "577A3A","Mtn Dew Bottle" });
-    nameMap.insert ({ "FFCC11","Mustard" });
-    nameMap.insert ({ "FFA812","Naples Yellow Deep" });
-    nameMap.insert ({ "5B90F6","Natural Gas" });
-    nameMap.insert ({ "45C3B8","Natural Turquoise" });
-    nameMap.insert ({ "FFDEAD","Navajowhite " });
-    nameMap.insert ({ "EECFA1","Navajowhite2" });
-    nameMap.insert ({ "CDB38B","Navajowhite3" });
-    nameMap.insert ({ "8B795E","Navajowhite4" });
-    nameMap.insert ({ "000080","Navy " });
-    nameMap.insert ({ "23238E","Navy Blue" });
-    nameMap.insert ({ "FF3300","Nectarine" });
-    nameMap.insert ({ "00FF66","Neon Avocado" });
-    nameMap.insert ({ "67C8FF","Neon Blue" });
-    nameMap.insert ({ "4D4DFF","Neon Blue" });
-    nameMap.insert ({ "83F52C","Neon Green" });
-    nameMap.insert ({ "FF6EC7","Neon Pink" });
-    nameMap.insert ({ "6D9BF1","Neptune" });
-    nameMap.insert ({ "49E20E","Nerf Green" });
-    nameMap.insert ({ "B7C8B6","New $20" });
-    nameMap.insert ({ "00009C","New Midnightblue" });
-    nameMap.insert ({ "EBC79E","New Tan" });
-    nameMap.insert ({ "7BCC70","Night Vision" });
-    nameMap.insert ({ "838EDE","Nikko Blue" });
-    nameMap.insert ({ "476A34","Noble Fir" });
-    nameMap.insert ({ "FF3333","Novascotia Salmon" });
-    nameMap.insert ({ "39B7CD","Nypd Blue" });
-    nameMap.insert ({ "3D5B43","Obsidian" });
-    nameMap.insert ({ "CC7722","Ochre" });
-    nameMap.insert ({ "34925E","Octopus" });
-    nameMap.insert ({ "CCCCFF","Offwhiteblue" });
-    nameMap.insert ({ "CCFFCC","Offwhitegreen" });
-    nameMap.insert ({ "73B1B7","Old Copper" });
-    nameMap.insert ({ "CFB53B","Old Gold" });
-    nameMap.insert ({ "46523C","Old Green" });
-    nameMap.insert ({ "FDF5E6","Old Lace " });
-    nameMap.insert ({ "337147","Old Money" });
-    nameMap.insert ({ "808000","Olive " });
-    nameMap.insert ({ "3B5E2B","Olive3B" });
-    nameMap.insert ({ "6B8E23","Olivedrab " });
-    nameMap.insert ({ "C0FF3E","Olivedrab1" });
-    nameMap.insert ({ "B3EE3A","Olivedrab2" });
-    nameMap.insert ({ "698B22","Olivedrab4" });
-    nameMap.insert ({ "3E7A5E","Ooze" });
-    nameMap.insert ({ "FF8000","Orange" });
-    nameMap.insert ({ "FF6600","Orange" });
-    nameMap.insert ({ "CC3232","Orange" });
-    nameMap.insert ({ "FFA500","Orange " });
-    nameMap.insert ({ "D5B77A","Orange Candy" });
-    nameMap.insert ({ "F87531","Orange Crush" });
-    nameMap.insert ({ "EE9A00","Orange2" });
-    nameMap.insert ({ "CD8500","Orange3" });
-    nameMap.insert ({ "8B5A00","Orange4" });
-    nameMap.insert ({ "FF7D40","Orange5" });
-    nameMap.insert ({ "FF007F","Orangered" });
-    nameMap.insert ({ "FF2400","Orangered" });
-    nameMap.insert ({ "FF4500","Orangered " });
-    nameMap.insert ({ "EE4000","Orangered2" });
-    nameMap.insert ({ "CD3700","Orangered3" });
-    nameMap.insert ({ "FF4040","Orangered4" });
-    nameMap.insert ({ "DB70DB","Orchid" });
-    nameMap.insert ({ "DA70D6","Orchid " });
-    nameMap.insert ({ "FF83FA","Orchid1" });
-    nameMap.insert ({ "EE7AE9","Orchid2" });
-    nameMap.insert ({ "CD69C9","Orchid3" });
-    nameMap.insert ({ "8B4789","Orchid4" });
-    nameMap.insert ({ "FF7722","Oregon Salmon" });
-    nameMap.insert ({ "AC7F24","Organic Tea" });
-    nameMap.insert ({ "283A90","Pabst Blue" });
-    nameMap.insert ({ "35586C","Pacific Blue" });
-    nameMap.insert ({ "36DBCA","Pacific Green" });
-    nameMap.insert ({ "FCB514","Packer Gold" });
-    nameMap.insert ({ "213D30","Packer Green" });
-    nameMap.insert ({ "98FB98","Pale Green " });
-    nameMap.insert ({ "9AFF9A","Pale Green1" });
-    nameMap.insert ({ "7CCD7C","Pale Green3" });
-    nameMap.insert ({ "548B54","Pale Green4" });
-    nameMap.insert ({ "AFEEEE","Pale Turquoise " });
-    nameMap.insert ({ "BBFFFF","Pale Turquoise1" });
-    nameMap.insert ({ "AEEEEE","Pale Turquoise2" });
-    nameMap.insert ({ "96CDCD","Pale Turquoise3" });
-    nameMap.insert ({ "668B8B","Pale Turquoise4" });
-    nameMap.insert ({ "DB7093","Pale Violetred " });
-    nameMap.insert ({ "FF82AB","Pale Violetred1" });
-    nameMap.insert ({ "EE799F","Pale Violetred2" });
-    nameMap.insert ({ "CD6889","Pale Violetred3" });
-    nameMap.insert ({ "8B475D","Pale Violetred4" });
-    nameMap.insert ({ "EEE8AA","Palegoldenrod " });
-    nameMap.insert ({ "608341","Palm" });
-    nameMap.insert ({ "FFFF7E","Papaya" });
-    nameMap.insert ({ "FFEFD5","Papayawhip " });
-    nameMap.insert ({ "2E6444","Park Bench" });
-    nameMap.insert ({ "484D46","Park Ranger" });
-    nameMap.insert ({ "3579DC","Parrot" });
-    nameMap.insert ({ "33FF33","Parrot Green" });
-    nameMap.insert ({ "55141C","Passion Fruit" });
-    nameMap.insert ({ "C1F0F6","Pastel Blue" });
-    nameMap.insert ({ "92CCA6","Pastel Green" });
-    nameMap.insert ({ "79973F","Pea" });
-    nameMap.insert ({ "78AB46","Pea" });
-    nameMap.insert ({ "FF9955","Peach" });
-    nameMap.insert ({ "FEF0DB","Peach" });
-    nameMap.insert ({ "FFADB9","Peachpuff" });
-    nameMap.insert ({ "FFDAB9","Peachpuff " });
-    nameMap.insert ({ "EECBAD","Peachpuff2" });
-    nameMap.insert ({ "CDAF95","Peachpuff3" });
-    nameMap.insert ({ "8B7765","Peachpuff4" });
-    nameMap.insert ({ "33A1C9","Peacock" });
-    nameMap.insert ({ "1D7CF2","Peafowl" });
-    nameMap.insert ({ "D1E231","Pear" });
-    nameMap.insert ({ "E18E2E","Pecan" });
-    nameMap.insert ({ "AAAAFF","Periwinkle" });
-    nameMap.insert ({ "0AC92B","Permanent Green" });
-    nameMap.insert ({ "DB2645","Permanent Redviolet" });
-    nameMap.insert ({ "CD853F","Peru " });
-    nameMap.insert ({ "0276FD","Picasso Blue" });
-    nameMap.insert ({ "7B7922","Pickle" });
-    nameMap.insert ({ "ECC3BF","Piglet Snout" });
-    nameMap.insert ({ "FCDC3B","Pineapple" });
-    nameMap.insert ({ "003300","Pinegreen" });
-    nameMap.insert ({ "FFC0CB","Pink " });
-    nameMap.insert ({ "DCA2CD","Pink Candy" });
-    nameMap.insert ({ "F6A8B6","Pink Cloud" });
-    nameMap.insert ({ "D3BECF","Pink Glass" });
-    nameMap.insert ({ "E0427F","Pink Jeep" });
-    nameMap.insert ({ "F6CCDA","Pink Shell" });
-    nameMap.insert ({ "FFB5C5","Pink1" });
-    nameMap.insert ({ "EEA9B8","Pink2" });
-    nameMap.insert ({ "CD919E","Pink3" });
-    nameMap.insert ({ "8B636C","Pink4" });
-    nameMap.insert ({ "EBCEAC","Pistachio Shell" });
-    nameMap.insert ({ "DDA0DD","Plum " });
-    nameMap.insert ({ "862A51","Plum Pudding" });
-    nameMap.insert ({ "FFBBFF","Plum1" });
-    nameMap.insert ({ "EAADEA","Plum2" });
-    nameMap.insert ({ "EEAEEE","Plum2" });
-    nameMap.insert ({ "CD96CD","Plum3" });
-    nameMap.insert ({ "8B668B","Plum4" });
-    nameMap.insert ({ "0BB5FF","Police Strobe" });
-    nameMap.insert ({ "4D6FAC","Pollock Blue" });
-    nameMap.insert ({ "F64D54","Pomegranate" });
-    nameMap.insert ({ "687E5A","Pond Scum" });
-    nameMap.insert ({ "31B94D","Pool Table" });
-    nameMap.insert ({ "FFFFAA","Popcorn Yellow" });
-    nameMap.insert ({ "B0E0E6","Powderblue " });
-    nameMap.insert ({ "302B54","Presidential Blue" });
-    nameMap.insert ({ "78A489","Pumice" });
-    nameMap.insert ({ "F5785A","Pummelo Pulp" });
-    nameMap.insert ({ "A020F0","Purple" });
-    nameMap.insert ({ "800080","Purple " });
-    nameMap.insert ({ "BDA0CB","Purple Candy" });
-    nameMap.insert ({ "B272A6","Purple Fish" });
-    nameMap.insert ({ "9C6B98","Purple Ink" });
-    nameMap.insert ({ "694489","Purple Rain" });
-    nameMap.insert ({ "5E2D79","Purple Rose" });
-    nameMap.insert ({ "9B30FF","Purple1" });
-    nameMap.insert ({ "912CEE","Purple2" });
-    nameMap.insert ({ "7D26CD","Purple3" });
-    nameMap.insert ({ "551A8B","Purple4" });
-    nameMap.insert ({ "AA00FF","Purple6" });
-    nameMap.insert ({ "699864","Putting" });
-    nameMap.insert ({ "F0A804","Pyridium Orange" });
-    nameMap.insert ({ "D9D9F3","Quartz" });
-    nameMap.insert ({ "CCCC00","Ralph Yellow" });
-    nameMap.insert ({ "872657","Raspberry" });
-    nameMap.insert ({ "FA1D2F","Raspberry Red" });
-    nameMap.insert ({ "C76114","Raw Sienna" });
-    nameMap.insert ({ "734A12","Raw Umber" });
-    nameMap.insert ({ "FF0000","Red " });
-    nameMap.insert ({ "B81324","Red Coat" });
-    nameMap.insert ({ "9D1309","Red Delicious Apple" });
-    nameMap.insert ({ "C75D4D","Red Roof" });
-    nameMap.insert ({ "EE0000","Red2" });
-    nameMap.insert ({ "CD0000","Red3" });
-    nameMap.insert ({ "C3E4ED","Robin's Egg" });
-    nameMap.insert ({ "3B5323","Romaine Lettuce" });
-    nameMap.insert ({ "FF00CC","Rose" });
-    nameMap.insert ({ "E33638","Rose Madder" });
-    nameMap.insert ({ "BC8F8F","Rosybrown " });
-    nameMap.insert ({ "FFC1C1","Rosybrown1" });
-    nameMap.insert ({ "EEB4B4","Rosybrown2" });
-    nameMap.insert ({ "CD9B9B","Rosybrown3" });
-    nameMap.insert ({ "8B6969","Rosybrown4" });
-    nameMap.insert ({ "3F6826","Royal Palm" });
-    nameMap.insert ({ "3333FF","Royalblue" });
-    nameMap.insert ({ "41690","Royalblue " });
-    nameMap.insert ({ "4876FF","Royalblue1" });
-    nameMap.insert ({ "436EEE","Royalblue2" });
-    nameMap.insert ({ "3A5FCD","Royalblue3" });
-    nameMap.insert ({ "27408B","Royalblue4" });
-    nameMap.insert ({ "C82536","Ruby Red" });
-    nameMap.insert ({ "8B4513","Saddlebrown " });
-    nameMap.insert ({ "FF5333","Safety Cone" });
-    nameMap.insert ({ "C8F526","Safety Vest" });
-    nameMap.insert ({ "FA8072","Salmon " });
-    nameMap.insert ({ "FF8C69","Salmon1" });
-    nameMap.insert ({ "EE8262","Salmon2" });
-    nameMap.insert ({ "CD7054","Salmon3" });
-    nameMap.insert ({ "8B4C39","Salmon4" });
-    nameMap.insert ({ "6F4242","Salmon5" });
-    nameMap.insert ({ "FFCC99","Sand" });
-    nameMap.insert ({ "A78D84","Sandstone" });
-    nameMap.insert ({ "F4A460","Sandybrown " });
-    nameMap.insert ({ "308014","Sapgreen" });
-    nameMap.insert ({ "8C1717","Scarlet" });
-    nameMap.insert ({ "487153","Scotland Pound" });
-    nameMap.insert ({ "68481","Sea Green" });
-    nameMap.insert ({ "683A5E","Sea Urchin" });
-    nameMap.insert ({ "00FFAA","Seagreen" });
-    nameMap.insert ({ "54FF9F","Seagreen1" });
-    nameMap.insert ({ "4EEE94","Seagreen2" });
-    nameMap.insert ({ "2E8B57","Seagreen3" });
-    nameMap.insert ({ "FFF5EE","Seashell " });
-    nameMap.insert ({ "EEE5DE","Seashell2" });
-    nameMap.insert ({ "CDC5BF","Seashell3" });
-    nameMap.insert ({ "8B8682","Seashell4" });
-    nameMap.insert ({ "FF6666","Seattle Salmon" });
-    nameMap.insert ({ "646F5E","Seaweed" });
-    nameMap.insert ({ "748269","Seaweed Roll" });
-    nameMap.insert ({ "6B4226","Semisweet Chocolate1" });
-    nameMap.insert ({ "E6B426","Semisweet Chocolate2" });
-    nameMap.insert ({ "5E2612","Sepia" });
-    nameMap.insert ({ "739AC5","Seurat Blue" });
-    nameMap.insert ({ "8E388E","Sgi Beet" });
-    nameMap.insert ({ "C5C1AA","Sgi Brightgray" });
-    nameMap.insert ({ "71C671","Sgi Chartreuse" });
-    nameMap.insert ({ "7D9EC0","Sgi Light Blue" });
-    nameMap.insert ({ "AAAAAA","Sgi Light Gray" });
-    nameMap.insert ({ "8E8E38","Sgi Olivedrab" });
-    nameMap.insert ({ "C67171","Sgi Salmon" });
-    nameMap.insert ({ "7171C6","Sgi Slate Blue" });
-    nameMap.insert ({ "388E8E","Sgi Teal" });
-    nameMap.insert ({ "40664D","Shamrock" });
-    nameMap.insert ({ "B2D0B4","Shamrock Shake" });
-    nameMap.insert ({ "8E6B23","Sienna" });
-    nameMap.insert ({ "A0522D","Sienna " });
-    nameMap.insert ({ "FF8247","Sienna1" });
-    nameMap.insert ({ "EE7942","Sienna2" });
-    nameMap.insert ({ "CD6839","Sienna3" });
-    nameMap.insert ({ "8B4726","Sienna4" });
-    nameMap.insert ({ "003F87","Sign Blue" });
-    nameMap.insert ({ "603311","Sign Brown" });
-    nameMap.insert ({ "006B54","Sign Green" });
-    nameMap.insert ({ "DD7500","Sign Orange" });
-    nameMap.insert ({ "AF1E2D","Sign Red" });
-    nameMap.insert ({ "FCD116","Sign Yellow" });
-    nameMap.insert ({ "E6E8FA","Silver" });
-    nameMap.insert ({ "C0C0C0","Silver " });
-    nameMap.insert ({ "87CEEB","Skyblue " });
-    nameMap.insert ({ "87CEFF","Skyblue1" });
-    nameMap.insert ({ "7EC0EE","Skyblue2" });
-    nameMap.insert ({ "6CA6CD","Skyblue3" });
-    nameMap.insert ({ "4A708B","Skyblue4" });
-    nameMap.insert ({ "0099CC","Skyblue5" });
-    nameMap.insert ({ "3299CC","Skyblue6" });
-    nameMap.insert ({ "007FFF","Slateblue" });
-    nameMap.insert ({ "6A5ACD","Slateblue " });
-    nameMap.insert ({ "836FFF","Slateblue1" });
-    nameMap.insert ({ "7A67EE","Slateblue2" });
-    nameMap.insert ({ "6959CD","Slateblue3" });
-    nameMap.insert ({ "473C8B","Slateblue4" });
-    nameMap.insert ({ "708090","Slategray " });
-    nameMap.insert ({ "C6E2FF","Slategray1" });
-    nameMap.insert ({ "B9D3EE","Slategray2" });
-    nameMap.insert ({ "9FB6CD","Slategray3" });
-    nameMap.insert ({ "6C7B8B","Slategray4" });
-    nameMap.insert ({ "708090","Slategrey " });
-    nameMap.insert ({ "A2627A","Smyrna Purple" });
-    nameMap.insert ({ "596C56","Snake" });
-    nameMap.insert ({ "FFFAFA","Snow " });
-    nameMap.insert ({ "EEE9E9","Snow2" });
-    nameMap.insert ({ "CDC9C9","Snow3" });
-    nameMap.insert ({ "8B8989","Snow4" });
-    nameMap.insert ({ "8BA870","Soylent Green" });
-    nameMap.insert ({ "E04006","Soylent Red" });
-    nameMap.insert ({ "F4F776","Soylent Yellow" });
-    nameMap.insert ({ "FF1CAE","Spicy Pink" });
-    nameMap.insert ({ "435D36","Spinach" });
-    nameMap.insert ({ "00FF33","Springgreen" });
-    nameMap.insert ({ "00FF7F","Springgreen " });
-    nameMap.insert ({ "00EE76","Springgreen2" });
-    nameMap.insert ({ "00CD66","Springgreen3" });
-    nameMap.insert ({ "008B45","Springgreen4" });
-    nameMap.insert ({ "2C5197","St Louis Blues" });
-    nameMap.insert ({ "2E37FE","Stained Glass" });
-    nameMap.insert ({ "E0DFDB","Stainless Steel" });
-    nameMap.insert ({ "006633","Starbucks" });
-    nameMap.insert ({ "236B8E","Steelblue" });
-    nameMap.insert ({ "4682B4","Steelblue " });
-    nameMap.insert ({ "63B8FF","Steelblue1" });
-    nameMap.insert ({ "5CACEE","Steelblue2" });
-    nameMap.insert ({ "4F94CD","Steelblue3" });
-    nameMap.insert ({ "36648B","Steelblue4" });
-    nameMap.insert ({ "BE2625","Strawberry" });
-    nameMap.insert ({ "EAB5C5","Strawberry Smoothie" });
-    nameMap.insert ({ "38B0DE","Summer Sky" });
-    nameMap.insert ({ "63D1F4","Surf" });
-    nameMap.insert ({ "A2C93A","Sweet Potato Vine" });
-    nameMap.insert ({ "67E6EC","Swimming Pool" });
-    nameMap.insert ({ "DB9370","Tan" });
-    nameMap.insert ({ "EE8833","Tan" });
-    nameMap.insert ({ "D2B48C","Tan " });
-    nameMap.insert ({ "FFA54F","Tan1" });
-    nameMap.insert ({ "EE9A49","Tan2" });
-    nameMap.insert ({ "8B5A2B","Tan4" });
-    nameMap.insert ({ "FF7216","Tangerine" });
-    nameMap.insert ({ "615E3F","Tank" });
-    nameMap.insert ({ "5F755E","Tea Leaves" });
-    nameMap.insert ({ "008080","Teal " });
-    nameMap.insert ({ "05EDFF","Teal LED" });
-    nameMap.insert ({ "385E0F","Terreverte" });
-    nameMap.insert ({ "B5509C","Thistle" });
-    nameMap.insert ({ "D8BFD8","Thistle " });
-    nameMap.insert ({ "FFE1FF","Thistle1" });
-    nameMap.insert ({ "EED2EE","Thistle2" });
-    nameMap.insert ({ "CDB5CD","Thistle3" });
-    nameMap.insert ({ "8B7B8B","Thistle4" });
-    nameMap.insert ({ "B6AFA9","Titanium" });
-    nameMap.insert ({ "FCFFF0","Titanium White" });
-    nameMap.insert ({ "FF6347","Tomato " });
-    nameMap.insert ({ "EE5C42","Tomato2" });
-    nameMap.insert ({ "CD4F39","Tomato3" });
-    nameMap.insert ({ "8B3626","Tomato4" });
-    nameMap.insert ({ "E79EA9","Tongue" });
-    nameMap.insert ({ "001980","Topaz" });
-    nameMap.insert ({ "659D32","Tree Moss" });
-    nameMap.insert ({ "62B1F6","Tropical Blue" });
-    nameMap.insert ({ "00AF33","Truegreen" });
-    nameMap.insert ({ "990099","Truepurple" });
-    nameMap.insert ({ "A74CAB","Turnip" });
-    nameMap.insert ({ "ADEAEA","Turquoise" });
-    nameMap.insert ({ "0FDDAF","Turquoise" });
-    nameMap.insert ({ "40E0D0","Turquoise " });
-    nameMap.insert ({ "00F5FF","Turquoise1" });
-    nameMap.insert ({ "00E5EE","Turquoise2" });
-    nameMap.insert ({ "00C5CD","Turquoise3" });
-    nameMap.insert ({ "00868B","Turquoise4" });
-    nameMap.insert ({ "00C78C","Turquoiseblue" });
-    nameMap.insert ({ "0147FA","Ty Nant" });
-    nameMap.insert ({ "120A8F","Ultramarine" });
-    nameMap.insert ({ "5C246E","Ultramarine Violet" });
-    nameMap.insert ({ "1464F4","Ulysses Butterfly" });
-    nameMap.insert ({ "5E2605","Vandyke Brown" });
-    nameMap.insert ({ "B4D7BF","Vanilla Mint" });
-    nameMap.insert ({ "D41A1F","Venetian Red" });
-    nameMap.insert ({ "5C4033","Very Dark Brown" });
-    nameMap.insert ({ "CDCDCD","Very Light Grey" });
-    nameMap.insert ({ "4F2F4F","Violet" });
-    nameMap.insert ({ "8F5E99","Violet" });
-    nameMap.insert ({ "EE82EE","Violet " });
-    nameMap.insert ({ "BF5FFF","Violet Flower" });
-    nameMap.insert ({ "CC3299","Violetred" });
-    nameMap.insert ({ "D02090","Violetred" });
-    nameMap.insert ({ "FF3E96","Violetred1" });
-    nameMap.insert ({ "EE3A8C","Violetred2" });
-    nameMap.insert ({ "CD3278","Violetred3" });
-    nameMap.insert ({ "8B2252","Violetred4" });
-    nameMap.insert ({ "6EFF70","Viridian Light" });
-    nameMap.insert ({ "4AC948","Wales" });
-    nameMap.insert ({ "808069","Warmgrey" });
-    nameMap.insert ({ "66FF66","Wasabi" });
-    nameMap.insert ({ "AEBB51","Wasabi Sauce" });
-    nameMap.insert ({ "F2473F","Watermelon Pulp" });
-    nameMap.insert ({ "54632C","Watermelon Rind" });
-    nameMap.insert ({ "99CDC9","Wavecrest" });
-    nameMap.insert ({ "3D5229","Wet Moss" });
-    nameMap.insert ({ "D8D8BF","Wheat" });
-    nameMap.insert ({ "F5DEB3","Wheat " });
-    nameMap.insert ({ "FFE7BA","Wheat1" });
-    nameMap.insert ({ "EED8AE","Wheat2" });
-    nameMap.insert ({ "CDBA96","Wheat3" });
-    nameMap.insert ({ "8B7E66","Wheat4" });
-    nameMap.insert ({ "FFFFFF","White " });
-    nameMap.insert ({ "F5F5F5","Whitesmoke " });
-    nameMap.insert ({ "820BBB","Wild Violet" });
-    nameMap.insert ({ "EEEB8D","Yellow Candy" });
-    nameMap.insert ({ "E0D873","Yellow Perch" });
-    nameMap.insert ({ "FFFF00","Yellow" });
-    nameMap.insert ({ "EEEE00","Yellow2" });
-    nameMap.insert ({ "CDCD00","Yellow3" });
-    nameMap.insert ({ "8B8B00","Yellow4" });
-    nameMap.insert ({ "9ACD32","Yellowgreen " });
-    nameMap.insert ({ "99CC32","Yellowgreen2" });
-    nameMap.insert ({ "E38217","Yellowochre" });
-    nameMap.insert ({ "2E5090","Yinmn Blue" });
-    nameMap.insert ({ "FFE600","Yolk" });
-    nameMap.insert ({ "FDF8FF","Zincwhite" });
-    nameMap.insert ({ "86C67C","100 Euro" });
-    nameMap.insert ({ "A46582","20 Pound" });
-    nameMap.insert ({ "1B6453","6 Ball" });
-
-
-
-}
+void ColorTable::createNameMap () {
+        for (auto& it : colorMap) {
+            string name =it.first;
+            Color *color = it.second;
+            string hexcode = color->getHexColor ();
+            nameMap.insert(std::pair<string, string> (hexcode, name));
+        }
+    }
 
 /**
  * Access Method.
  * 
- * \param colorName : name of Color; e.g., "Orange"
- * \return the the Color representing the input name.
+ * @param colorName : name of Color; e.g., "Orange"
+ * @return the Color representing the input name.
  */
 Color *ColorTable::getColor (string colorName)  {
     Color *result = new Color ();
@@ -2245,10 +1159,9 @@ Color *ColorTable::getColor (string colorName)  {
 }
 
 /**
- * Access Method.
- *
- * \param colorName : 6 character HEX value.
- * \return the name corresponding the the HEX value. If not found, return "UNKNOWN".
+ * Accesses the Name representing the 6-char hex color code. 
+ * @param hexstr : 6 character HEX value.
+ * @return the name corresponding the the HEX value. If not found, return "UNKNOWN".
  */
 string ColorTable::getColorName (string hexstr) {
     string result = "UNKNOWN";
@@ -2261,29 +1174,27 @@ string ColorTable::getColorName (string hexstr) {
 }
 
 /**
- * Access method.
- * 
- * \return the Color Map as a map<string, Color*>.
+ * Provides access to the Color Map.
+ * @return the Color Map as a map<string, Color*>.
  */
-map<string, Color* > ColorTable::getColorMap () {
+ColorTable::ColorMap ColorTable::getColorMap () {
     return this->colorMap;
 }
 
 /**
- * Access method.
- *
- * \return the Name Map as a map<string, string>.
+ * Provides access to the Color Name Map.
+ * @return the Name Map as a map<string, string>.
  */
-map<string, string> ColorTable::getNameMap () {
+ColorTable::NameMap ColorTable::getNameMap () {
     return nameMap;
 }
 
 /**
+ * Prints the list of Color Map Names to /tmp/ColorMapNames.\ txt.
  * Debug aid.
- * Prints the list of Color Map Names to /tmp/ColorMapNames.txt
  */
 void ColorTable::dumpColorMapNames () {
-    map<string, Color*>::iterator it;
+    ColorTable::ColorMap::iterator it;
     ofstream outfile;
     outfile.open ("c:\\tmp\\ColorMapNames.txt");
     if (it != colorMap.end ())
@@ -2292,11 +1203,11 @@ void ColorTable::dumpColorMapNames () {
 }
 
 /**
+ * Prints the list of Name Map Names to /tmp/NameMapNames.\ txt.
  * Debug aid.
- * Prints the list of Name Map Names to /tmp/NameMapNames.txt
  */
 void ColorTable::dumpNameMapNames () {
-    map<string, string>::iterator it;
+    ColorTable::NameMap::iterator it;
     ofstream outfile;
     outfile.open ("C:\\tmp\\NameMapNames.txt");
     if (it != nameMap.end ()) {
